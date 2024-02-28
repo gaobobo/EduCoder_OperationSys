@@ -4,18 +4,29 @@
 #     Copyright (C) 2024  gaobobo
 
 
-if [ -z $1 ]; then
-    echo "Usage: $0 <LevelCode>"
+helpInfo(){
+    echo "Usage: $0 <LevelCode> [Gitee|Github]"
     echo "Example: $0 4-1"
-    echo "用法：$0 <关卡编号>"
+    echo "用法：$0 <关卡编号> [Gitee|Github]"
     echo "示例：$0 4-1"
+}
+
+if [ -z $1 ]; then
+    helpInfo
     exit 1
-fi
 
-LevelCode=$1
-readonly LevelCode
+readonly LevelCode=$1
+readonly DownloadSite=${2:-Gitee}
 
-wget -O /tmp/${LevelCode}.sh https://raw.githubusercontent.com/gaobobo/educoder/master/Scripts/${LevelCode}.sh
+case $DownloadSite in
+    Gitee)
+        wget -O /tmp/${LevelCode}.sh https://gitee.com/coconut_floss/EduCoder_OperationSys/raw/main/Scripts/${LevelCode0}/$LevelCode.sh
+        ;;
+    Github)
+        wget -O /tmp/${LevelCode}.sh https://raw.githubusercontent.com/gaobobo/EduCoder_OperationSys/main/Scripts/${LevelCode}.sh
+        ;;
+    *)
+esac
 
 if [ $? -ne 0 ]; then
     echo "Download ${LevelCode}.sh failed. Is the LevelCode correct?"
