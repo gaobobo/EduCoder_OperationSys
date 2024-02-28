@@ -6,9 +6,9 @@
 echo "${0}脚本已运行"
 
 mkdir /linux
-touch hello.txt
+touch /hello.txt
 mv /hello.txt /linux/hello.txt
-rm -f hello.txt
+rm -f /hello.txt
 
 echo "脚本运行完成。可直接评测。"
 
