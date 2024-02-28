@@ -11,9 +11,11 @@
 ```shell
 sudo apt update
 sudo apt install -y wget
-wget -O /tmp/start.sh https://github.com/gaobobo/EduCoder_OperationSys/blob/main/Scripts/start.sh
+wget -O /tmp/start.sh https://gitee.com/coconut_floss/EduCoder_OperationSys/raw/main/Scripts/start.sh
+# 使用Github作为下载源：
+# wget -O /tmp/start.sh https://github.com/gaobobo/EduCoder_OperationSys/tree/main/Scripts/start.sh
 chmod +x /tmp/start.sh
-/tmp/start.sh
+/tmp/start.sh {LevelCode}
 ```
 
 各个关卡的通关代码也可在微信公众号“椰松杂货铺”获取。

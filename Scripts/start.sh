@@ -11,7 +11,7 @@ helpInfo(){
     echo "示例：$0 4-1"
 }
 
-if [ !$ $1 ]; then
+if [ -z "$1" ]; then
     helpInfo
     exit 1
 fi
@@ -25,6 +25,11 @@ case $DownloadSite in
         ;;
     Github)
         wget -O /tmp/${LevelCode}.sh https://raw.githubusercontent.com/gaobobo/EduCoder_OperationSys/main/Scripts/${LevelCode}.sh
+        ;;
+    *)
+        echo "Unknown download site: $DownloadSite"
+        echo "未知的下载站点：$DownloadSite"
+        exit 1
         ;;
 esac
 
