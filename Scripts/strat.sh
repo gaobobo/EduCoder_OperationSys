@@ -7,7 +7,7 @@ if [ -z $1 ]; then
     echo "Usage: $0 <LevelCode>"
     echo "Example: $0 4-1"
     echo "用法：$0 <关卡编号>"
-    echo "示例：$0 4.1"
+    echo "示例：$0 4-1"
     exit 1
 fi
 
