@@ -2,7 +2,7 @@
 
 本项目提供shell脚本，运行后即可快速通关。
 
-本项目不检查任何来自Gitee的Issue。如果你从Issue访问本项目，可能不是最新的副本。前往本项目的[Github主页](githun.com/gaobobo/EduCoder_OperationSys)获取最新的更新。
+本项目不检查任何来自Gitee的Issue。如果你从Gitee访问本项目，可能不是最新的副本。前往本项目的[Github主页](githun.com/gaobobo/EduCoder_OperationSys)获取最新的更新。
 
 ## 如何使用
 
