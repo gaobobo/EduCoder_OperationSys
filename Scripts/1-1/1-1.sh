@@ -5,6 +5,8 @@
 
 echo "${0}脚本已运行"
 
+readonly DownloadSite=${1:-Gitee} 
+
 mkdir /linux
 touch /hello.txt
 mv /hello.txt /linux/hello.txt
