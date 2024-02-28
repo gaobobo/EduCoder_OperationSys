@@ -14,6 +14,7 @@ helpInfo(){
 if [ -z $1 ]; then
     helpInfo
     exit 1
+fi
 
 readonly LevelCode=$1
 readonly DownloadSite=${2:-Gitee}
@@ -25,7 +26,6 @@ case $DownloadSite in
     Github)
         wget -O /tmp/${LevelCode}.sh https://raw.githubusercontent.com/gaobobo/EduCoder_OperationSys/main/Scripts/${LevelCode}.sh
         ;;
-    *)
 esac
 
 if [ $? -ne 0 ]; then
