@@ -11,7 +11,7 @@
 ```shell
 sudo apt update
 sudo apt install -y wget
-wget -O /tmp/start.sh https://github.com/gaobobo/EduCoder_OperationSys/blob/main/Scripts/strat.sh
+wget -O /tmp/start.sh https://github.com/gaobobo/EduCoder_OperationSys/blob/main/Scripts/start.sh
 chmod +x /tmp/start.sh
 /tmp/strat.sh
 ```
