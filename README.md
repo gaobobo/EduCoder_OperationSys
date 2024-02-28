@@ -13,7 +13,7 @@ sudo apt update
 sudo apt install -y wget
 wget -O /tmp/start.sh https://github.com/gaobobo/EduCoder_OperationSys/blob/main/Scripts/start.sh
 chmod +x /tmp/start.sh
-/tmp/strat.sh
+/tmp/start.sh
 ```
 
 各个关卡的通关代码也可在微信公众号“椰松杂货铺”获取。
