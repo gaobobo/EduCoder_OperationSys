@@ -11,7 +11,7 @@ helpInfo(){
     echo "示例：$0 4-1"
 }
 
-if [ -z $1 ]; then
+if [ !$ $1 ]; then
     helpInfo
     exit 1
 fi
