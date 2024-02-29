@@ -39,5 +39,4 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-chmod +x /tmp/${LevelCode}.sh
-/tmp/${LevelCode}.sh
+source /tmp/${LevelCode}.sh
