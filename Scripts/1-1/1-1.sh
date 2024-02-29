@@ -13,6 +13,4 @@ touch /hello.txt
 mv /hello.txt /linux/1.txt
 rm -f /hello.txt
 
-echo "脚本运行完成。可直接评测。"
-
 exit 0
