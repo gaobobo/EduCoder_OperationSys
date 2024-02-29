@@ -9,8 +9,6 @@
 将下列代码中的`{LevelCode}`替换为相应的的关卡代号即可。关卡代号为`章节号-小关`。例如，“课堂练习1：环境体验”的“第4关：实验环境练习”关卡代号为`4-1`。
 
 ```shell
-sudo apt update
-sudo apt install -y wget
 wget -O /tmp/start.sh https://gitee.com/coconut_floss/EduCoder_OperationSys/raw/main/Scripts/start.sh
 # 使用Github作为下载源：
 # wget -O /tmp/start.sh https://github.com/gaobobo/EduCoder_OperationSys/tree/main/Scripts/start.sh
