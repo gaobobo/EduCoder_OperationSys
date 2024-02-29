@@ -22,7 +22,7 @@ case $DownloadSite in
         ;;
 esac
 
-rm -f /tmp/2.1.kehou-2/sched.c /root/os/linux-0.11-lab/0/linux/kernel/sched.c
+mv -f /tmp/2.1.kehou-2/sched.c /root/os/linux-0.11-lab/0/linux/kernel/sched.c
 
 make ~/os/linux-0.11-lab/0/linux/
 

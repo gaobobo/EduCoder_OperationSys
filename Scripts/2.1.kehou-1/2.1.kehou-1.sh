@@ -34,7 +34,7 @@ ln -s 1 cur
 cd 1/linux/
 # make
 
-rm -f /tmp/2.1.kehou-1/system_call.s /root/os/linux-0.11-lab/1/linux/kernel/system_call.s
+mv -f /tmp/2.1.kehou-1/system_call.s /root/os/linux-0.11-lab/1/linux/kernel/system_call.s
 make ~/os/linux-0.11-lab/1/linux/
 
 return 0
