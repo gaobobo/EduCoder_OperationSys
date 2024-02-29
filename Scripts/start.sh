@@ -40,3 +40,9 @@ if [ $? -ne 0 ]; then
 fi
 
 source /tmp/${LevelCode}.sh
+
+if (( $? == 0 )); then
+    echo "脚本运行完成。可直接评测。"
+else
+    echo "脚本运行失败。请重试。"
+fi
