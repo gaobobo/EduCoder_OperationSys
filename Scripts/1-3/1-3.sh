@@ -13,4 +13,4 @@ chmod g-r oldFile2
 chmod o+x oldFile3
 chmod u=r,g=w,o=x oldFile4
 
-exit 0
+return 0

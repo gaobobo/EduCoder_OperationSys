@@ -11,4 +11,4 @@ touch hello.txt
 mv hello.txt /linux/1.txt
 rm -f hello.txt
 
-exit 0
+return 0
