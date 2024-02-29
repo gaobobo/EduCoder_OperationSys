@@ -3,7 +3,10 @@
 #     Operation System Course's Educoder excrises shell script. / 操作系统课程的头歌过关脚本。
 #     Copyright (C) 2024  gaobobo
 
-readonly DownloadSite=${1:-Gitee}
+DownloadSite=${1:-Gitee}
+readonly DownloadSite
+
+mkdir -p /tmp/1-4
 
 case $DownloadSite in
     Gitee)
