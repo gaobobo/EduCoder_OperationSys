@@ -41,7 +41,7 @@ fi
 
 source /tmp/${LevelCode}.sh
 
-if (( $? == 0 )); then
+if [ $? -eq 0 ]; then
     echo "脚本运行完成。可直接评测。"
 else
     echo "脚本运行失败。请重试。"
