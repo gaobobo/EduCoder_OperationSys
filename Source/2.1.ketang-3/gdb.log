@@ -1,0 +1,217 @@
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.5) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from tools/system...done.
+0x0000fff0 in sys_pipe (fildes=0x0 <startup_32>) at pipe.c:93
+93			current->filp[fd[0]]=NULL;
+Breakpoint 1 at 0x67a7: file init/main.c, line 112.
+
+Breakpoint 1, main () at init/main.c:112
+112	{			/* The startup routine assumes (well, ...) this */
+1: current->pid = 0
+(gdb) b di[Ko_timer
+Breakpoint 2 at 0x73b0: file sched.c, line 307.
+(gdb) c
+Continuing.
+
+Breakpoint 2, do_timer (cpl=3) at sched.c:307
+307	{
+1: current->pid = 0
+(gdb) pi[K[Kp jiffies 
+$1 = 1
+(gdb) c
+Continuing.
+
+Breakpoint 2, do_timer (cpl=3) at sched.c:307
+307	{
+1: current->pid = 0
+(gdb) c
+Continuing.
+
+Breakpoint 2, do_timer (cpl=3) at sched.c:307
+307	{
+1: current->pid = 1
+(gdb) c
+Continuing.
+
+Breakpoint 2, do_timer (cpl=3) at sched.c:307
+307	{
+1: current->pid = 0
+(gdb) c
+Continuing.
+
+Breakpoint 2, do_timer (cpl=3) at sched.c:307
+307	{
+1: current->pid = 0
+(gdb) c
+Continuing.
+
+Breakpoint 2, do_timer (cpl=3) at sched.c:307
+307	{
+1: current->pid = 0
+(gdb) bt
+#0  do_timer (cpl=3) at sched.c:307
+#1  0x0000786b in timer_interrupt ()
+#2  0x00000003 in startup_32 ()
+(gdb) finish
+Run till exit from #0  do_timer (cpl=3) at sched.c:307
+0x0000786b in timer_interrupt ()
+1: current->pid = 0
+(gdb) disas
+Dump of assembler code for function timer_interrupt:
+   0x0000783c <+0>:	push   %ds
+   0x0000783d <+1>:	push   %es
+   0x0000783e <+2>:	push   %fs
+   0x00007840 <+4>:	push   %edx
+   0x00007841 <+5>:	push   %ecx
+   0x00007842 <+6>:	push   %ebx
+   0x00007843 <+7>:	push   %eax
+   0x00007844 <+8>:	mov    $0x10,%eax
+   0x00007849 <+13>:	mov    %eax,%ds
+   0x0000784b <+15>:	mov    %eax,%es
+   0x0000784d <+17>:	mov    $0x17,%eax
+   0x00007852 <+22>:	mov    %eax,%fs
+   0x00007854 <+24>:	incl   0x227c0
+   0x0000785a <+30>:	mov    $0x20,%al
+   0x0000785c <+32>:	out    %al,$0x20
+   0x0000785e <+34>:	mov    0x20(%esp),%eax
+   0x00007862 <+38>:	and    $0x3,%eax
+   0x00007865 <+41>:	push   %eax
+   0x00007866 <+42>:	call   0x73b0 <do_timer>
+=> 0x0000786b <+47>:	add    $0x4,%esp
+   0x0000786e <+50>:	jmp    0x7798 <ret_from_sys_call>
+   0x00007873 <+55>:	nop
+End of assembler dump.
+(gdb) si
+0x0000786e in timer_interrupt ()
+1: current->pid = 0
+(gdb) si
+0x00007798 in ret_from_sys_call ()
+1: current->pid = 0
+(gdb) disas
+Dump of assembler code for function ret_from_sys_call:
+=> 0x00007798 <+0>:	mov    0x1fa20,%eax
+   0x0000779d <+5>:	cmp    0x1fa40,%eax
+   0x000077a3 <+11>:	je     0x77d5 <ret_from_sys_call+61>
+   0x000077a5 <+13>:	cmpw   $0xf,0x20(%esp)
+   0x000077ab <+19>:	jne    0x77d5 <ret_from_sys_call+61>
+   0x000077ad <+21>:	cmpw   $0x17,0x2c(%esp)
+   0x000077b3 <+27>:	jne    0x77d5 <ret_from_sys_call+61>
+   0x000077b5 <+29>:	mov    0xc(%eax),%ebx
+   0x000077b8 <+32>:	mov    0x210(%eax),%ecx
+   0x000077be <+38>:	not    %ecx
+   0x000077c0 <+40>:	and    %ebx,%ecx
+   0x000077c2 <+42>:	bsf    %ecx,%ecx
+   0x000077c5 <+45>:	je     0x77d5 <ret_from_sys_call+61>
+   0x000077c7 <+47>:	btr    %ecx,%ebx
+   0x000077ca <+50>:	mov    %ebx,0xc(%eax)
+   0x000077cd <+53>:	inc    %ecx
+   0x000077ce <+54>:	push   %ecx
+   0x000077cf <+55>:	call   0xa329 <do_signal>
+   0x000077d4 <+60>:	pop    %eax
+   0x000077d5 <+61>:	pop    %eax
+   0x000077d6 <+62>:	pop    %ebx
+   0x000077d7 <+63>:	pop    %ecx
+   0x000077d8 <+64>:	pop    %edx
+   0x000077d9 <+65>:	pop    %fs
+   0x000077db <+67>:	pop    %es
+   0x000077dc <+68>:	pop    %ds
+   0x000077dd <+69>:	iret   
+   0x000077de <+70>:	xchg   %ax,%ax
+End of assembler dump.
+(gdb) b * 0x77dd
+Breakpoint 3 at 0x77dd
+(gdb) disas
+Dump of assembler code for function ret_from_sys_call:
+=> 0x00007798 <+0>:	mov    0x1fa20,%eax
+   0x0000779d <+5>:	cmp    0x1fa40,%eax
+   0x000077a3 <+11>:	je     0x77d5 <ret_from_sys_call+61>
+   0x000077a5 <+13>:	cmpw   $0xf,0x20(%esp)
+   0x000077ab <+19>:	jne    0x77d5 <ret_from_sys_call+61>
+   0x000077ad <+21>:	cmpw   $0x17,0x2c(%esp)
+   0x000077b3 <+27>:	jne    0x77d5 <ret_from_sys_call+61>
+   0x000077b5 <+29>:	mov    0xc(%eax),%ebx
+   0x000077b8 <+32>:	mov    0x210(%eax),%ecx
+   0x000077be <+38>:	not    %ecx
+   0x000077c0 <+40>:	and    %ebx,%ecx
+   0x000077c2 <+42>:	bsf    %ecx,%ecx
+   0x000077c5 <+45>:	je     0x77d5 <ret_from_sys_call+61>
+   0x000077c7 <+47>:	btr    %ecx,%ebx
+   0x000077ca <+50>:	mov    %ebx,0xc(%eax)
+   0x000077cd <+53>:	inc    %ecx
+   0x000077ce <+54>:	push   %ecx
+   0x000077cf <+55>:	call   0xa329 <do_signal>
+   0x000077d4 <+60>:	pop    %eax
+   0x000077d5 <+61>:	pop    %eax
+   0x000077d6 <+62>:	pop    %ebx
+   0x000077d7 <+63>:	pop    %ecx
+   0x000077d8 <+64>:	pop    %edx
+   0x000077d9 <+65>:	pop    %fs
+   0x000077db <+67>:	pop    %es
+   0x000077dc <+68>:	pop    %ds
+   0x000077dd <+69>:	iret   
+   0x000077de <+70>:	xchg   %ax,%ax
+End of assembler dump.
+(gdb) si
+0x0000779d in ret_from_sys_call ()
+1: current->pid = 0
+(gdb) disas
+Dump of assembler code for function ret_from_sys_call:
+   0x00007798 <+0>:	mov    0x1fa20,%eax
+=> 0x0000779d <+5>:	cmp    0x1fa40,%eax
+   0x000077a3 <+11>:	je     0x77d5 <ret_from_sys_call+61>
+   0x000077a5 <+13>:	cmpw   $0xf,0x20(%esp)
+   0x000077ab <+19>:	jne    0x77d5 <ret_from_sys_call+61>
+   0x000077ad <+21>:	cmpw   $0x17,0x2c(%esp)
+   0x000077b3 <+27>:	jne    0x77d5 <ret_from_sys_call+61>
+   0x000077b5 <+29>:	mov    0xc(%eax),%ebx
+   0x000077b8 <+32>:	mov    0x210(%eax),%ecx
+   0x000077be <+38>:	not    %ecx
+   0x000077c0 <+40>:	and    %ebx,%ecx
+   0x000077c2 <+42>:	bsf    %ecx,%ecx
+   0x000077c5 <+45>:	je     0x77d5 <ret_from_sys_call+61>
+   0x000077c7 <+47>:	btr    %ecx,%ebx
+   0x000077ca <+50>:	mov    %ebx,0xc(%eax)
+   0x000077cd <+53>:	inc    %ecx
+   0x000077ce <+54>:	push   %ecx
+   0x000077cf <+55>:	call   0xa329 <do_signal>
+   0x000077d4 <+60>:	pop    %eax
+   0x000077d5 <+61>:	pop    %eax
+   0x000077d6 <+62>:	pop    %ebx
+   0x000077d7 <+63>:	pop    %ecx
+   0x000077d8 <+64>:	pop    %edx
+   0x000077d9 <+65>:	pop    %fs
+   0x000077db <+67>:	pop    %es
+   0x000077dc <+68>:	pop    %ds
+   0x000077dd <+69>:	iret   
+   0x000077de <+70>:	xchg   %ax,%ax
+End of assembler dump.
+(gdb) info reg
+eax            0x1ea20	125472
+ecx            0x8440	33856
+edx            0xa	10
+ebx            0x3	3
+esp            0x1f9f0	0x1f9f0 <init_task+4048>
+ebp            0x25768	0x25768 <user_stack+4072>
+esi            0xe0000	917504
+edi            0xffc	4092
+eip            0x779d	0x779d <ret_from_sys_call+5>
+eflags         0x16	[ PF AF ]
+cs             0x8	8
+ss             0x10	16
+ds             0x10	16
+es             0x10	16
+fs             0x17	23
+gs             0x17	23
+(gdb) 
