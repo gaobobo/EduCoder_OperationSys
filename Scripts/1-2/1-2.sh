@@ -5,6 +5,6 @@
 
 readonly DownloadSite=${1:-Gitee} 
 
-echo "Hello,Linux!" > /home/headless
+echo "Hello,Linux!" > /home/headless/test.txt
 
 exit 0
