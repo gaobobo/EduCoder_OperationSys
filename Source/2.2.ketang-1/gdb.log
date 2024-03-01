@@ -1,0 +1,86 @@
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.5) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from tools/system...done.
+sys_pipe (fildes=0x0 <startup_32>) at pipe.c:92
+92		if (j==1)
+Breakpoint 1 at 0x67a7: file init/main.c, line 112.
+
+Breakpoint 1, main () at init/main.c:112
+112	{			/* The startup routine assumes (well, ...) this */
+1: current->pid = 0
+(gdb) [K(gdb) b main.c:17[K47
+Breakpoint 2 at 0x6903: file init/main.c, line 147.
+(gdb) c
+Continuing.
+
+Breakpoint 2, main () at init/main.c:147
+147		jiffies = jiffies/0;
+1: current->pid = 0
+(gdb) x/6i $eip
+=> 0x6903 <main+348>:	mov    0x227e0,%eax
+   0x6908 <main+353>:	mov    $0x0,%ecx
+   0x690d <main+358>:	cltd   
+   0x690e <main+359>:	idiv   %ecx
+   0x6910 <main+361>:	mov    %eax,0x227e0
+   0x6915 <main+366>:	mov    $0x2,%eax
+(gdb) si
+0x00006908	147		jiffies = jiffies/0;
+1: current->pid = 0
+(gdb) si
+0x0000690d	147		jiffies = jiffies/0;
+1: current->pid = 0
+(gdb) si
+0x0000690e	147		jiffies = jiffies/0;
+1: current->pid = 0
+(gdb) info reg
+eax            0x0	0
+ecx            0x0	0
+edx            0x0	0
+ebx            0x3	3
+esp            0x25760	0x25760 <user_stack+4032>
+ebp            0x25788	0x25788 <user_stack+4072>
+esi            0xe0000	917504
+edi            0xffc	4092
+eip            0x690e	0x690e <main+359>
+eflags         0x202	[ IF ]
+cs             0xf	15
+ss             0x17	23
+ds             0x17	23
+es             0x17	23
+fs             0x17	23
+gs             0x17	23
+(gdb) si[K[Ksi
+0x0000814b in divide_error ()
+1: current->pid = 0
+(gdb) info reg
+eax            0x0	0
+ecx            0x0	0
+edx            0x0	0
+ebx            0x3	3
+esp            0x1fa2c	0x1fa2c <init_task+4076>
+ebp            0x25788	0x25788 <user_stack+4072>
+esi            0xe0000	917504
+edi            0xffc	4092
+eip            0x814b	0x814b <divide_error>
+eflags         0x202	[ IF ]
+cs             0x8	8
+ss             0x10	16
+ds             0x17	23
+es             0x17	23
+fs             0x17	23
+gs             0x17	23
+(gdb) x/wx $esp
+0x1fa2c <init_task+4076>:	0x0000690e
+(gdb) 
