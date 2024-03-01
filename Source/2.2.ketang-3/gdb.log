@@ -1,0 +1,119 @@
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.5) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from tools/system...done.
+0x0000fff0 in sys_pipe (fildes=0x0 <startup_32>)
+    at pipe.c:93
+93			current->filp[fd[0]]=NULL;
+Breakpoint 1 at 0x67a7: file init/main.c, line 112.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x0000e05c in mount_root () at super.c:275
+275		printk("%d/%d free blocks\n\r",free,p->s_nzones);
+1: current->pid = 0
+(gdb) [K(gdb) b task1
+Breakpoint 2 at 0x7985
+(gdb) c
+Continuing.
+
+Breakpoint 2, 0x00007985 in task1 ()
+1: current->pid = 1
+(gdb) x/5i $eip
+=> 0x7985 <task1>:	mov    $0x31,%al
+   0x7987 <task1+2>:	int    $0x81
+   0x7989 <task1+4>:	mov    $0xffff,%ecx
+   0x798e <task1+9>:	loop   0x798e <task1+9>
+   0x7990 <task1+11>:	mov    $0x20,%al
+(gdb) si
+0x00007987 in task1 ()
+1: current->pid = 1
+(gdb) x/5i $eip
+=> 0x7987 <task1+2>:	int    $0x81
+   0x7989 <task1+4>:	mov    $0xffff,%ecx
+   0x798e <task1+9>:	loop   0x798e <task1+9>
+   0x7990 <task1+11>:	mov    $0x20,%al
+   0x7992 <task1+13>:	int    $0x81
+(gdb) si
+0x00007948 in display_interrupt ()
+1: current->pid = 1
+(gdb) bt
+#0  0x00007948 in display_interrupt ()
+#1  0x00007989 in task1 ()
+#2  0x0000000f in startup_32 ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+(gdb) disas
+Dump of assembler code for function display_interrupt:
+=> 0x00007948 <+0>:	push   %ds
+   0x00007949 <+1>:	push   %edx
+   0x0000794a <+2>:	push   %ecx
+   0x0000794b <+3>:	push   %ebx
+   0x0000794c <+4>:	push   %eax
+   0x0000794d <+5>:	mov    $0x10,%edx
+   0x00007952 <+10>:	mov    %edx,%ds
+   0x00007954 <+12>:	call   0x7915 <display_char>
+   0x00007959 <+17>:	pop    %eax
+   0x0000795a <+18>:	pop    %ebx
+   0x0000795b <+19>:	pop    %ecx
+   0x0000795c <+20>:	pop    %edx
+   0x0000795d <+21>:	pop    %ds
+   0x0000795e <+22>:	iret   
+End of assembler dump.
+(gdb) b * 0x795e
+Breakpoint 3 at 0x795e
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x0000795e in display_interrupt ()
+1: current->pid = 1
+(gdb) info reg
+eax            0x31	49
+ecx            0x0	0
+edx            0xe	14
+ebx            0xe	14
+esp            0xffffec	0xffffec
+ebp            0x25768	0x25768 <user_stack+4072>
+esi            0xe0000	917504
+edi            0xffc	4092
+eip            0x795e	0x795e <display_interrupt+22>
+eflags         0x283	[ CF SF IF ]
+cs             0x8	8
+ss             0x10	16
+ds             0x17	23
+es             0x17	23
+fs             0x17	23
+gs             0x17	23
+(gdb) x/5wx $esp
+0xffffec:	0x00007989	0x0000000f	0x00000246	0x0002573c
+0xfffffc:	0x00000017
+(gdb) si
+0x00007989 in task1 ()
+1: current->pid = 1
+(gdb) info reg
+eax            0x31	49
+ecx            0x0	0
+edx            0xe	14
+ebx            0xe	14
+esp            0x2573c	0x2573c <user_stack+4028>
+ebp            0x25768	0x25768 <user_stack+4072>
+esi            0xe0000	917504
+edi            0xffc	4092
+eip            0x7989	0x7989 <task1+4>
+eflags         0x246	[ PF ZF IF ]
+cs             0xf	15
+ss             0x17	23
+ds             0x17	23
+es             0x17	23
+fs             0x17	23
+gs             0x17	23
+(gdb) 
