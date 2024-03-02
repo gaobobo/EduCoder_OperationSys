@@ -1,0 +1,195 @@
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.5) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from tools/system...done.
+0x0000fff0 in sys_pipe (
+    fildes=0x0 <startup_32>) at pipe.c:93
+93			current->filp[fd[0]]=NULL;
+Breakpoint 1 at 0x67a7: file init/main.c, line 112.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x0000e05c in mount_root ()
+    at super.c:275
+275		printk("%d/%d free blocks\n\r",free,p->s_nzones);
+1: current->pid = 0
+(gdb) b sys_pause if currnt[K[Kent->pid==1
+Breakpoint 2 at 0x6f46: file sched.c, line 147.
+(gdb) b sched.c:120 if p_pid[K[K[K[K-P[Kpid==1>pid==1[C[C[C[C[C[C
+Breakpoint 3 at 0x6e2a: file sched.c, line 120.
+(gdb) c
+Continuing.
+
+Breakpoint 2, sys_pause () at sched.c:147
+147		current->state = TASK_INTERRUPTIBLE;
+1: current->pid = 1
+(gdb) n
+148		schedule();
+1: current->pid = 1
+(gdb) c
+Continuing.
+
+Breakpoint 3, schedule () at sched.c:120
+120					(*p)->state=TASK_RUNNING;
+1: current->pid = 0
+(gdb) p p->pid
+$1 = 1
+(gdb) p p->state
+$2 = 1
+(gdb) bt
+#0  schedule () at sched.c:120
+#1  0x000074a3 in do_timer (cpl=3)
+    at sched.c:336
+#2  0x0000786b in timer_interrupt ()
+#3  0x00000003 in startup_32 ()
+(gdb) disable
+(gdb) finish
+Run till exit from #0  schedule ()
+    at sched.c:120
+0x000074a3 in do_timer (cpl=3)
+    at sched.c:336
+336		schedule();
+1: current->pid = 0
+(gdb) list 
+331		if (current_DOR & 0xf0)
+332			do_floppy_timer();
+333		if ((--current->counter)>0) return;
+334		current->counter=0;
+335		if (!cpl) return;
+336		schedule();
+337	}
+338	
+339	int sys_alarm(long seconds)
+340	{
+(gdb) finish
+Run till exit from #0  0x000074a3 in do_timer (cpl=3) at sched.c:336
+0x0000786b in timer_interrupt ()
+1: current->pid = 0
+(gdb) x/3i $eip
+=> 0x786b <timer_interrupt+47>:	
+    add    $0x4,%esp
+   0x786e <timer_interrupt+50>:	
+    jmp    0x7798 <ret_from_sys_call>
+   0x7873 <timer_interrupt+55>:	nop
+(gdb) si
+0x0000786e in timer_interrupt ()
+1: current->pid = 0
+(gdb) si
+0x00007798 in ret_from_sys_call ()
+1: current->pid = 0
+(gdb) x/28i $eip
+=> 0x7798 <ret_from_sys_call>:	
+    mov    0x1fa20,%eax
+   0x779d <ret_from_sys_call+5>:	
+    cmp    0x1fa40,%eax
+   0x77a3 <ret_from_sys_call+11>:	
+    je     0x77d5 <ret_from_sys_call+61>
+   0x77a5 <ret_from_sys_call+13>:	
+    cmpw   $0xf,0x20(%esp)
+   0x77ab <ret_from_sys_call+19>:	
+    jne    0x77d5 <ret_from_sys_call+61>
+   0x77ad <ret_from_sys_call+21>:	
+    cmpw   $0x17,0x2c(%esp)
+   0x77b3 <ret_from_sys_call+27>:	
+    jne    0x77d5 <ret_from_sys_call+61>
+   0x77b5 <ret_from_sys_call+29>:	
+    mov    0xc(%eax),%ebx
+   0x77b8 <ret_from_sys_call+32>:	
+    mov    0x210(%eax),%ecx
+   0x77be <ret_from_sys_call+38>:	
+    not    %ecx
+   0x77c0 <ret_from_sys_call+40>:	
+    and    %ebx,%ecx
+   0x77c2 <ret_from_sys_call+42>:	
+    bsf    %ecx,%ecx
+   0x77c5 <ret_from_sys_call+45>:	
+    je     0x77d5 <ret_from_sys_call+61>
+   0x77c7 <ret_from_sys_call+47>:	
+    btr    %ecx,%ebx
+   0x77ca <ret_from_sys_call+50>:	
+    mov    %ebx,0xc(%eax)
+   0x77cd <ret_from_sys_call+53>:	
+    inc    %ecx
+   0x77ce <ret_from_sys_call+54>:	
+    push   %ecx
+   0x77cf <ret_from_sys_call+55>:	
+    call   0xa329 <do_signal>
+   0x77d4 <ret_from_sys_call+60>:	
+    pop    %eax
+   0x77d5 <ret_from_sys_call+61>:	
+    pop    %eax
+   0x77d6 <ret_from_sys_call+62>:	
+    pop    %ebx
+   0x77d7 <ret_from_sys_call+63>:	
+    pop    %ecx
+   0x77d8 <ret_from_sys_call+64>:	
+    pop    %edx
+   0x77d9 <ret_from_sys_call+65>:	
+    pop    %fs
+   0x77db <ret_from_sys_call+67>:	
+    pop    %es
+   0x77dc <ret_from_sys_call+68>:	
+    pop    %ds
+   0x77dd <ret_from_sys_call+69>:	
+    iret   
+   0x77de <ret_from_sys_call+70>:	
+    xchg   %ax,%ax
+(gdb) b * 0x77dd
+Breakpoint 4 at 0x77dd
+(gdb) c
+Continuing.
+
+Breakpoint 4, 0x000077dd in ret_from_sys_call ()
+1: current->pid = 0
+(gdb) si
+0x0000796c in task0 ()
+1: current->pid = 0
+(gdb) disassemble 
+Dump of assembler code for function task0:
+   0x00007963 <+0>:	mov    $0x30,%al
+   0x00007965 <+2>:	int    $0x81
+   0x00007967 <+4>:	mov    $0xffff,%ecx
+=> 0x0000796c <+9>:	loop   0x796c <task0+9>
+   0x0000796e <+11>:	mov    $0x20,%al
+   0x00007970 <+13>:	int    $0x81
+   0x00007972 <+15>:	mov    $0xffff,%ecx
+   0x00007977 <+20>:	loop   0x7977 <task0+20>
+   0x00007979 <+22>:	mov    $0x20,%al
+   0x0000797b <+24>:	int    $0x81
+   0x0000797d <+26>:	mov    $0xffff,%ecx
+   0x00007982 <+31>:	loop   0x7982 <task0+31>
+   0x00007984 <+33>:	ret    
+End of assembler dump.
+(gdb) info reg
+eax            0x30	48
+ecx            0x4124	16676
+edx            0x21	33
+ebx            0x3	3
+esp            0x2573c	0x2573c <user_stack+4028>
+ebp            0x25768	0x25768 <user_stack+4072>
+esi            0xe0000	917504
+edi            0xffc	4092
+eip            0x796c	0x796c <task0+9>
+eflags         0x246	[ PF ZF IF ]
+cs             0xf	15
+ss             0x17	23
+ds             0x17	23
+es             0x17	23
+fs             0x17	23
+gs             0x17	23
+(gdb) q
+A debugging session is active.
+
+	Inferior 1 [Remote target] will be killed.
+
+Quit anyway? (y or n) y
