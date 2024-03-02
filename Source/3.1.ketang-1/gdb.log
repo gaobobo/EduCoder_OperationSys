@@ -1,0 +1,70 @@
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.5) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from tools/system...done.
+0x0000fff0 in sys_pipe (fildes=0x0 <startup_32>) at pipe.c:93
+93			current->filp[fd[0]]=NULL;
+Breakpoint 1 at 0x67a7: file init/main.c, line 112.
+
+Breakpoint 1, main () at init/main.c:112
+112	{			/* The startup routine assumes (well, ...) this */
+1: current->pid = 0
+(gdb) b task [K1
+Breakpoint 2 at 0x7985
+(gdb) c
+Continuing.
+
+Breakpoint 2, 0x00007985 in task1 ()
+1: current->pid = 1
+(gdb) p *cure[K
+cur            cur_rate       cur_table      current_DOR    current_track
+cur2           cur_spec1      current        current_drive  cursor
+(gdb) p *curruent[K[K[K[Kent
+$1 = {state = 0, counter = 15, priority = 15, signal = 0, sigaction = {{
+      sa_handler = 0x0 <startup_32>, sa_mask = 0, sa_flags = 0, 
+      sa_restorer = 0x0 <startup_32>} <repeats 13 times>, {
+      sa_handler = 0x1 <startup_32+1>, sa_mask = 0, sa_flags = -1073741824, 
+      sa_restorer = 0xe <startup_32+14>}, {sa_handler = 0x0 <startup_32>, 
+      sa_mask = 0, sa_flags = 0, 
+      sa_restorer = 0x0 <startup_32>} <repeats 18 times>}, blocked = 0, 
+  exit_code = 0, start_code = 67108864, end_code = 0, end_data = 0, brk = 0, 
+  start_stack = 0, pid = 1, father = 0, pgrp = 0, session = 0, leader = 0, 
+  uid = 0, euid = 0, suid = 0, gid = 0, egid = 0, sgid = 0, alarm = 0, 
+  utime = 0, stime = 0, cutime = 0, cstime = 0, start_time = 0, used_math = 0, 
+  tty = -1, umask = 18, pwd = 0x0 <startup_32>, root = 0x0 <startup_32>, 
+  executable = 0x0 <startup_32>, close_on_exec = 0, filp = {
+    0x0 <startup_32> <repeats 20 times>}, ldt = {{a = 0, b = 0}, {a = 159, 
+      b = 79756032}, {a = 159, b = 79753984}}, tss = {back_link = 0, 
+    esp0 = 16777216, ss0 = 16, esp1 = 0, ss1 = 0, esp2 = 0, ss2 = 0, cr3 = 0, 
+    eip = 26890, eflags = 514, eax = 0, ecx = 22000, edx = 33, ebx = 3, 
+    esp = 153408, ebp = 153448, esi = 917504, edi = 4092, es = 23, cs = 15, 
+    ss = 23, ds = 23, fs = 23, gs = 23, ldt = 56, trace_bitmap = -2147483648, 
+    i387 = {cwd = 0, swd = 0, twd = 0, fip = 0, fcs = 0, foo = 0, fos = 0, 
+      st_space = {0 <repeats 20 times>}}}}
+(gdb) p/x current->tss
+$2 = {back_link = 0x0, esp0 = 0x1000000, ss0 = 0x10, esp1 = 0x0, ss1 = 0x0, 
+  esp2 = 0x0, ss2 = 0x0, cr3 = 0x0, eip = 0x690a, eflags = 0x202, eax = 0x0, 
+  ecx = 0x55f0, edx = 0x21, ebx = 0x3, esp = 0x25740, ebp = 0x25768, 
+  esi = 0xe0000, edi = 0xffc, es = 0x17, cs = 0xf, ss = 0x17, ds = 0x17, 
+  fs = 0x17, gs = 0x17, ldt = 0x38, trace_bitmap = 0x80000000, i387 = {
+    cwd = 0x0, swd = 0x0, twd = 0x0, fip = 0x0, fcs = 0x0, foo = 0x0, 
+    fos = 0x0, st_space = {0x0 <repeats 20 times>}}}
+(gdb) p &current->tss
+$3 = (struct tss_struct *) 0xfff2e8
+(gdb) qui[K[K
+A debugging session is active.
+
+	Inferior 1 [Remote target] will be killed.
+
+Quit anyway? (y or n) y
