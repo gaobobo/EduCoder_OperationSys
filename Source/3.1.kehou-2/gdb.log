@@ -1,0 +1,58 @@
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.5) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from tools/system...done.
+0x0000fff0 in sys_pipe (fildes=0x0 <startup_32>) at pipe.c:93
+93			current->filp[fd[0]]=NULL;
+Breakpoint 1 at 0x67a7: file init/main.c, line 112.
+
+Breakpoint 1, main () at init/main.c:112
+112	{			/* The startup routine assumes (well, ...) this */
+1: current->pid = 0
+(gdb) b1[K 145
+Breakpoint 2 at 0x68e8: file init/main.c, line 145.
+(gdb) c
+Continuing.
+
+Breakpoint 2, main () at init/main.c:145
+145		move_to_user_mode();
+1: current->pid = 0
+(gdb) n
+147		if (!fork()) {		/* we count on this going ok */
+1: current->pid = 0
+(gdb) p/x current_[K->tss
+$1 = {back_link = 0x0, esp0 = 0x1fa20, ss0 = 0x10, esp1 = 0x0, 
+  ss1 = 0x0, esp2 = 0x0, ss2 = 0x0, cr3 = 0x0, eip = 0x0, eflags = 0x0, 
+  eax = 0x0, ecx = 0x0, edx = 0x0, ebx = 0x0, esp = 0x0, ebp = 0x0, 
+  esi = 0x0, edi = 0x0, es = 0x17, cs = 0x17, ss = 0x17, ds = 0x17, 
+  fs = 0x17, gs = 0x17, ldt = 0x28, trace_bitmap = 0x80000000, i387 = {
+    cwd = 0x0, swd = 0x0, twd = 0x0, fip = 0x0, fcs = 0x0, foo = 0x0, 
+    fos = 0x0, st_space = {0x0 <repeats 20 times>}}}
+(gdb) x/3i $eip
+=> 0x6903 <main+348>:	mov    $0x2,%eax
+   0x6908 <main+353>:	int    $0x80
+   0x690a <main+355>:	mov    %eax,-0x1c(%ebp)
+(gdb) si
+0x00006908 in fork () at init/main.c:24
+24	__always_inline _syscall0(int,fork)
+1: current->pid = 0
+(gdb) si
+0x00007764 in system_call ()
+1: current->pid = 0
+(gdb) px[K/x $esp
+$2 = 0x1fa0c
+(gdb) x/6wx $w[Kesp
+0x1fa0c <init_task+4076>:	0x0000690a	0x0000000f	0x00000202	0x00025740
+0x1fa1c <init_task+4092>:	0x00000017	0x0001ea20
+(gdb) [K(gdb) 
