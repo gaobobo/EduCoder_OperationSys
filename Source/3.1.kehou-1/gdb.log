@@ -1,0 +1,55 @@
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.5) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from tools/system...done.
+0x0000fff0 in sys_pipe (fildes=0x0 <startup_32>) at pipe.c:93
+93			current->filp[fd[0]]=NULL;
+Breakpoint 1 at 0x67a7: file init/main.c, line 112.
+
+Breakpoint 1, main () at init/main.c:112
+112	{			/* The startup routine assumes (well, ...) this */
+1: current->pid = 0
+(gdb) b task1
+Breakpoint 2 at 0x7985
+(gdb) c
+Continuing.
+
+Breakpoint 2, 0x00007985 in task1 ()
+1: current->pid = 1
+(gdb) x/6i $eip
+=> 0x7985 <task1>:	mov    $0x31,%al
+   0x7987 <task1+2>:	int    $0x81
+   0x7989 <task1+4>:	mov    $0xffff,%ecx
+   0x798e <task1+9>:	loop   0x798e <task1+9>
+   0x7990 <task1+11>:	mov    $0x20,%al
+   0x7992 <task1+13>:	int    $0x81
+(gdb) si
+0x00007987 in task1 ()
+1: current->pid = 1
+(gdb) p/x current->tss
+$1 = {back_link = 0x0, esp0 = 0x1000000, ss0 = 0x10, esp1 = 0x0, ss1 = 0x0, 
+  esp2 = 0x0, ss2 = 0x0, cr3 = 0x0, eip = 0x690a, eflags = 0x202, eax = 0x0, 
+  ecx = 0x55f0, edx = 0x21, ebx = 0x3, esp = 0x25740, ebp = 0x25768, esi = 0xe0000, 
+  edi = 0xffc, es = 0x17, cs = 0xf, ss = 0x17, ds = 0x17, fs = 0x17, gs = 0x17, 
+  ldt = 0x38, trace_bitmap = 0x80000000, i387 = {cwd = 0x0, swd = 0x0, twd = 0x0, 
+    fip = 0x0, fcs = 0x0, foo = 0x0, fos = 0x0, st_space = {0x0 <repeats 20 times>}}}
+(gdb) si
+0x00007948 in display_interrupt ()
+1: current->pid = 1
+(gdb) p/x $esp
+$2 = 0xffffec
+(gdb) x/6w [Kx $esp
+0xffffec:	0x00007989	0x0000000f	0x00000246	0x0002573c
+0xfffffc:	0x00000017	0x00000017
+(gdb) [K(gdb) 
