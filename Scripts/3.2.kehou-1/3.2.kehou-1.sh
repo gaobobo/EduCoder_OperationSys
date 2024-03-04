@@ -27,4 +27,7 @@ esac
 mv -f /tmp/3.2.kehou-1/exec.c /home/headless/os/linux-0.11-lab/0/linux/fs/exec.c
 mv -f /tmp/3.2.kehou-1/fork.c /home/headless/os/linux-0.11-lab/0/linux/kernel/fork.c
 
+cd  ~/os/linux-0.11-lab/0/linux/
+make
+
 return 0
