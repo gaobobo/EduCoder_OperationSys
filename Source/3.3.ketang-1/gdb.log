@@ -1,0 +1,46 @@
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.5) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from tools/system...done.
+0x0000fff0 in sys_pipe (fildes=0x0 <startup_32>) at pipe.c:93
+93			current->filp[fd[0]]=NULL;
+Breakpoint 1 at 0x67a7: file init/main.c, line 112.
+
+Breakpoint 1, main () at init/main.c:112
+112	{			/* The startup routine assumes (well, ...) this */
+1: current->pid = 0
+(gdb) b sc
+sched.c     sched_init  scr_end     scrdown     scrup       
+sched.h     schedule    scr_loc     scroll      
+(gdb) b sched.cc[K:~~[K(gdb) b sched.c:~~[K(gdb) b sched.c:~~[K(gdb) b sched.c:~~[K[K[K:~~[K[K336
+Breakpoint 2 at 0x749e: file sched.c, line 336.
+(gdb) c
+Continuing.
+
+Breakpoint 2, do_timer (cpl=3) at sched.c:336
+336		schedule();
+1: current->pid = 0
+(gdb) p jiffies 
+$1 = 16
+(gdb) p cue[Krrent-》[K>counter 
+$2 = 0
+(gdb) p task
+$3 = {0x1ea20 <init_task>, 0xfff000, 0x0 <startup_32> <repeats 62 times>}
+(gdb) p task[1]-?[K>pid
+$4 = 1
+(gdb) [[Kp task[1]-》[K>state 
+$5 = 1
+(gdb) p et[K[Ktask[1]->alarm 
+$6 = 103
+(gdb) 
