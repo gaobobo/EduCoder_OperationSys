@@ -1,0 +1,108 @@
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.5) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from tools/system...done.
+0x0000fff0 in sys_pipe (fildes=0x0 <startup_32>) at pipe.c:93
+93			current->filp[fd[0]]=NULL;
+Breakpoint 1 at 0x67a7: file init/main.c, line 112.
+
+Breakpoint 1, main () at init/main.c:112
+112	{			/* The startup routine assumes (well, ...) this */
+1: current->pid = 0
+(gdb) b schedule 
+Breakpoint 2 at 0x6d93: file sched.c, line 106.
+(gdb) c
+Continuing.
+
+Breakpoint 2, schedule () at sched.c:106
+106	{
+1: current->pid = 0
+(gdb) bt
+#0  schedule () at sched.c:106
+#1  0x00006f56 in sys_pause () at sched.c:148
+#2  0x00007787 in system_call ()
+#3  0x00000003 in startup_32 ()
+(gdb) p task[0]->pid
+$1 = 0
+(gdb) p task[0]->state 
+$2 = 1
+(gdb) p task[1]->pid 
+$3 = 1
+(gdb) p t[Ktask[1]->state 
+$4 = 0
+(gdb)  [Kb sched.c:136
+Breakpoint 3 at 0x6eb8: file sched.c, line 136.
+(gdb) c
+Continuing.
+
+Breakpoint 3, schedule () at sched.c:136
+136			if (c) break;
+1: current->pid = 0
+(gdb) p next
+$5 = 1
+(gdb) c
+Continuing.
+
+Breakpoint 2, schedule () at sched.c:106
+106	{
+1: current->pid = 1
+(gdb) bt
+#0  schedule () at sched.c:106
+#1  0x00006f56 in sys_pause () at sched.c:148
+#2  0x00007787 in system_call ()
+#3  0x00000001 in startup_32 ()
+Backtrace stopped: previous frame inner to this frame (corrupt stack?)
+(gdb) p task[0]-> [Kpid
+$6 = 0
+(gdb) p task[0]->star[Kte 
+$7 = 1
+(gdb) [ [K[Kp task[1]->pid
+$8 = 1
+(gdb) p task[1]->state 
+$9 = 1
+(gdb) c
+Continuing.
+
+Breakpoint 3, schedule () at sched.c:136
+136			if (c) break;
+1: current->pid = 1
+(gdb) p next
+$10 = 0
+(gdb) c
+Continuing.
+
+Breakpoint 2, schedule () at sched.c:106
+106	{
+1: current->pid = 0
+(gdb) bt
+#0  schedule () at sched.c:106
+#1  0x00007798 in system_call ()
+#2  0x00000000 in ?? ()
+(gdb) p task[0]->pid
+$11 = 0
+(gdb) p task[0]->star[Kte
+$12 = 1
+(gdb) p task[1]->task[K[K[K[Kpid
+$13 = 1
+(gdb) p task[1]->state
+$14 = 1
+(gdb) c
+Continuing.
+
+Breakpoint 3, schedule () at sched.c:136
+136			if (c) break;
+1: current->pid = 0
+(gdb) p next
+$15 = 0
+(gdb) 
