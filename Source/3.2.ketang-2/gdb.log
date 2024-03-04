@@ -1,0 +1,68 @@
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.5) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from tools/system...done.
+0x0000fff0 in sys_pipe (
+    fildes=0x0 <startup_32>) at pipe.c:93
+93			current->filp[fd[0]]=NULL;
+Breakpoint 1 at 0x67a7: file init/main.c, line 112.
+
+Breakpoint 1, main () at init/main.c:112
+112	{			/* The startup routine assumes (well, ...) this */
+1: current->pid = 0
+(gdb) b[K(gdb) b 145
+Breakpoint 2 at 0x68e8: file init/main.c, line 145.
+(gdb) c
+Continuing.
+
+Breakpoint 2, main () at init/main.c:145
+145		move_to_user_mode();
+1: current->pid = 0
+(gdb) n
+147		if (!fork()) {		/* we count on this going ok */
+1: current->pid = 0
+(gdb) x/5i $eip
+=> 0x6903 <main+348>:	mov    $0x2,%eax
+   0x6908 <main+353>:	int    $0x80
+   0x690a <main+355>:	mov    %eax,-0x1c(%ebp)
+   0x690d <main+358>:	cmpl   $0x0,-0x1c(%ebp)
+   0x6911 <main+362>:	js     0x6918 <main+369>
+(gdb) si
+0x00006908 in fork () at init/main.c:24
+24	__always_inline _syscall0(int,fork)
+1: current->pid = 0
+(gdb) p $[K&task[0]->tss
+$1 = (struct tss_struct *) 0x1ed08 <init_task+744>
+(gdb) ni
+0x0000690a	24	__always_inline _syscall0(int,fork)
+1: current->pid = 0
+(gdb) p task
+$2 = {0x1ea20 <init_task>, 0xfff000, 0x0 <startup_32> <repeats 62 times>}
+(gdb) x/20wx gdt
+0x5cc0 <gdt>:	0x00000000	0x00000000	0x00000fff	0x00c09b00
+0x5cd0 <gdt+16>:	0x00000fff	0x00c09300	0x00000000	0x00000000
+0x5ce0 <gdt+32>:	0xed080068	0x00008b01	0xecf00068	0x00008201
+0x5cf0 <gdt+48>:	0xf2e80068	0x000089ff	0xf2d00068	0x000082ff
+0x5d00 <gdt+64>:	0x00000000	0x00000000	0x00000000	0x00000000
+(gdb) p &task[1]->tss
+$3 = (struct tss_struct *) 0xfff2e8
+(gdb) p/x task[1]->tss
+$4 = {back_link = 0x0, esp0 = 0x1000000, ss0 = 0x10, esp1 = 0x0, ss1 = 0x0, 
+  esp2 = 0x0, ss2 = 0x0, cr3 = 0x0, eip = 0x690a, eflags = 0x202, eax = 0x0, 
+  ecx = 0x55f0, edx = 0x21, ebx = 0x3, esp = 0x25740, ebp = 0x25768, 
+  esi = 0xe0000, edi = 0xffc, es = 0x17, cs = 0xf, ss = 0x17, ds = 0x17, 
+  fs = 0x17, gs = 0x17, ldt = 0x38, trace_bitmap = 0x80000000, i387 = {
+    cwd = 0x0, swd = 0x0, twd = 0x0, fip = 0x0, fcs = 0x0, foo = 0x0, 
+    fos = 0x0, st_space = {0x0 <repeats 20 times>}}}
+(gdb) 
