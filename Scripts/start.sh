@@ -39,7 +39,14 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-source /tmp/${LevelCode}.sh
+case $DownloadSite in
+    Gitee)
+        source /tmp/${LevelCode}.sh Gitee
+        ;;
+    Github)
+        source /tmp/${LevelCode}.sh Github
+        ;;
+esac
 
 if [ $? -eq 0 ]; then
     echo "脚本运行完成。可直接评测。"
