@@ -11,9 +11,13 @@ mkdir -p /tmp/2.1.ketang-2
 case $DownloadSite in
     Gitee)
         wget -O /tmp/2.1.ketang-2/恢复点指令地址.txt https://gitee.com/coconut_floss/EduCoder_OperationSys/raw/main/Source/2.1.ketang-2/恢复点指令地址.txt
+        wget -O /tmp/2.1.ketang-2/gdb.log https://gitee.com/coconut_floss/EduCoder_OperationSys/raw/main/Source/2.1.ketang-1/gdb.log
+
         ;;
     Github)
         wget -O /tmp/2.1.ketang-2/恢复点指令地址.txt https://raw.githubusercontent.com/gaobobo/EduCoder_OperationSys/main/Source/2.1.ketang-2/恢复点指令地址.txt
+        wget -O /tmp/2.1.ketang-2/gdb.log https://raw.githubusercontent.com/gaobobo/EduCoder_OperationSys/main/Source/2.1.ketang-1/gdb.log
+
         ;;
     *)
         echo "Unknown download site: $DownloadSite"
@@ -23,5 +27,6 @@ case $DownloadSite in
 esac
 
 mv -f /tmp/2.1.ketang-2/恢复点指令地址.txt /data/workspace/myshixun/恢复点指令地址.txt
+mv -f /tmp/2.1.ketang-2/gdb.log /root/gdb.log
 
 return 0
