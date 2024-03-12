@@ -6,15 +6,34 @@
 
 ## 如何使用
 
-将下列代码中的`{LevelCode}`替换为相应的的关卡代号即可。关卡代号为`章节号-小关`，比如`4.1-1`。例如，“课堂练习1：环境体验”的“第4关：实验环境练习”关卡代号为`4-1`。
+将下列代码中的`{LevelCode}`替换为相应的的关卡代号即可。关卡代号为`章节号.ketang(课堂)/kehou(课后)-小关`，例如，“课后作业3.3.2：进程的调度”的“第1关：版本 0 内核中的进程调度分析”关卡代号为`3.3.2.kehou-1`。
 
 ```shell
+ping -c 3 www.baidu.com
+if [ $? -ne 0 ]; then
+    echo "网络不通，无法安装。请稍后再试。"
+    exit 1
+fi
+clear
+# 使用Gitee站点镜像：
 wget -O /tmp/start.sh https://gitee.com/coconut_floss/EduCoder_OperationSys/raw/main/Scripts/start.sh
-# 使用Github作为下载源：
-# wget -O /tmp/start.sh https://github.com/gaobobo/EduCoder_OperationSys/tree/main/Scripts/start.sh
 chmod +x /tmp/start.sh
 /tmp/start.sh {LevelCode}
 ```
+
+> 备选方案：
+> ```shell
+> ping -c 3 www.baidu.com
+> if [ $? -ne 0 ]; then
+>     echo "网络不通，无法安装。请稍后再试。"
+>     exit 1
+> fi
+> clear
+> # 使用Github作为下载源：
+> wget -O /tmp/start.sh https://github.com/gaobobo/EduCoder_OperationSys/tree/main/Scripts/start.sh
+> chmod +x /tmp/start.sh
+> /tmp/start.sh {LevelCode}
+> ```
 
 各个关卡的通关代码也可在微信公众号“椰松杂货铺”获取。
 
