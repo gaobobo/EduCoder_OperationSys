@@ -6,7 +6,7 @@
 
 ## 如何使用
 
-将下列代码中的`{LevelCode}`替换为相应的的关卡代号即可。关卡代号为`章节号-小关`，比如`4.1-1`。例如，“课堂练习1：环境体验”的“第4关：实验环境练习”关卡代号为`4-1`。
+将下列代码中的`{LevelCode}`替换为相应的的关卡代号即可。关卡代号为`章节号.ketang(课堂)/kehou(课后)-小关`，例如，“课后作业3.3.2：进程的调度”的“第1关：版本 0 内核中的进程调度分析”关卡代号为`3.3.2.kehou-1`。
 
 ```shell
 wget -O /tmp/start.sh https://gitee.com/coconut_floss/EduCoder_OperationSys/raw/main/Scripts/start.sh
