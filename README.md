@@ -11,9 +11,10 @@
 ```shell
 ping -c 3 www.baidu.com
 if [ $? -ne 0 ]; then
-    echo "网络不通，无法安装。请稍后再试"
+    echo "网络不通，无法安装。请稍后再试。"
     exit 1
 fi
+clear
 # 使用Gitee站点镜像：
 wget -O /tmp/start.sh https://gitee.com/coconut_floss/EduCoder_OperationSys/raw/main/Scripts/start.sh
 chmod +x /tmp/start.sh
@@ -24,9 +25,10 @@ chmod +x /tmp/start.sh
 > ```shell
 > ping -c 3 www.baidu.com
 > if [ $? -ne 0 ]; then
->     echo "网络不通，无法安装。请稍后再试"
+>     echo "网络不通，无法安装。请稍后再试。"
 >     exit 1
 > fi
+> clear
 > # 使用Github作为下载源：
 > wget -O /tmp/start.sh https://github.com/gaobobo/EduCoder_OperationSys/tree/main/Scripts/start.sh
 > chmod +x /tmp/start.sh
