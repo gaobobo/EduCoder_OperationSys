@@ -35,7 +35,7 @@ ln -s 1.2 cur
 cd 1.2/linux/
 # make
 
-mv -f /tmp/3.3.kehou-2/system_call.s /root/os/linux-0.11-lab/1.2/linux/kernel/sched.c
+mv -f /tmp/3.3.kehou-2/sched.c /root/os/linux-0.11-lab/1.2/linux/kernel/sched.c
 
 cd ~/os/linux-0.11-lab/1.2/linux/
 make 
