@@ -24,7 +24,7 @@ case $DownloadSite in
         ;;
 esac
 
-cp /data/workspace/myshixun/exp1/1.2.tgz ~/os/
+cp /data/workspace/myshixun/exp2/1.2.tgz ~/os/
 
 cd ~/os/linux-0.11-lab
 tar -zxvf ../1.2.tgz 1.2/
