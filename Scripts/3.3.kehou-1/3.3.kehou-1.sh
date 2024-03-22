@@ -12,12 +12,12 @@ case $DownloadSite in
     Gitee)
         wget -O /tmp/3.3.kehou-1/第三关.txt https://gitee.com/coconut_floss/EduCoder_OperationSys/raw/main/Source/3.3.kehou-1/第三关.txt
         wget -O /tmp/3.3.kehou-1/gdb.log https://gitee.com/coconut_floss/EduCoder_OperationSys/raw/main/Source/3.3.kehou-1/gdb.log
-        wget -O /tmp/3.3.kehou-1/gdb.log https://gitee.com/coconut_floss/EduCoder_OperationSys/raw/main/Source/3.3.kehou-1/sched.c
+        wget -O /tmp/3.3.kehou-1/sched.c https://gitee.com/coconut_floss/EduCoder_OperationSys/raw/main/Source/3.3.kehou-1/sched.c
         ;;
     Github)
         wget -O /tmp/3.3.kehou-1/第三关.txt https://raw.githubusercontent.com/gaobobo/EduCoder_OperationSys/main/Source/3.3.kehou-1/第三关.txt
         wget -O /tmp/3.3.kehou-1/gdb.log https://raw.githubusercontent.com/gaobobo/EduCoder_OperationSys/main/Source/3.3.kehou-1/gdb.log
-        wget -O /tmp/3.3.kehou-1/gdb.log https://raw.githubusercontent.com/gaobobo/EduCoder_OperationSys/main/Source/3.3.kehou-1/sched.c
+        wget -O /tmp/3.3.kehou-1/sched.c https://raw.githubusercontent.com/gaobobo/EduCoder_OperationSys/main/Source/3.3.kehou-1/sched.c
         ;;
     *)
         echo "Unknown download site: $DownloadSite"
