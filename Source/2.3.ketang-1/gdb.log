@@ -1,0 +1,156 @@
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.5) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from tools/system...done.
+0x0000fff0 in sys_pipe (fildes=0x0 <startup_32>) at pipe.c:93
+93			current->filp[fd[0]]=NULL;
+Breakpoint 1 at 0x67a7: file init/main.c, line 112.
+
+Breakpoint 1, main () at init/main.c:112
+112	{			/* The startup routine assumes (well, ...) this */
+1: current->pid = 0
+(gdb) [K(gdb) b system_c[Kcall 
+Breakpoint 2 at 0x7764
+(gdb) c
+Continuing.
+
+Breakpoint 2, 0x00007764 in system_call ()
+1: current->pid = 0
+(gdb) display $eax
+2: $eax = 2
+(gdb) dissas[K[K[K[Ksass
+Dump of assembler code for function system_call:
+=> 0x00007764 <+0>:	cmp    $0x55,%eax
+   0x00007767 <+3>:	ja     0x7750 <bad_sys_call>
+   0x00007769 <+5>:	push   %ds
+   0x0000776a <+6>:	push   %es
+   0x0000776b <+7>:	push   %fs
+   0x0000776d <+9>:	push   %edx
+   0x0000776e <+10>:	push   %ecx
+   0x0000776f <+11>:	push   %ebx
+   0x00007770 <+12>:	mov    $0x10,%edx
+   0x00007775 <+17>:	mov    %edx,%ds
+   0x00007777 <+19>:	mov    %edx,%es
+   0x00007779 <+21>:	mov    $0x17,%edx
+   0x0000777e <+26>:	mov    %edx,%fs
+   0x00007780 <+28>:	call   *0x1e8c0(,%eax,4)
+   0x00007787 <+35>:	push   %eax
+   0x00007788 <+36>:	mov    0x1fa20,%eax
+   0x0000778d <+41>:	cmpl   $0x0,(%eax)
+   0x00007790 <+44>:	jne    0x7758 <reschedule>
+   0x00007792 <+46>:	cmpl   $0x0,0x4(%eax)
+   0x00007796 <+50>:	je     0x7758 <reschedule>
+End of assembler dump.
+(gdb) b * 0x7780
+Breakpoint 3 at 0x7780
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x00007780 in system_call ()
+1: current->pid = 0
+2: $eax = 2
+(gdb) si
+0x00007884 in sys_fork ()
+1: current->pid = 0
+2: $eax = 2
+(gdb) c[Kc
+Continuing.
+
+Breakpoint 2, 0x00007764 in system_call ()
+1: current->pid = 0
+2: $eax = 29
+(gdb) diss[Kass
+Dump of assembler code for function system_call:
+=> 0x00007764 <+0>:	cmp    $0x55,%eax
+   0x00007767 <+3>:	ja     0x7750 <bad_sys_call>
+   0x00007769 <+5>:	push   %ds
+   0x0000776a <+6>:	push   %es
+   0x0000776b <+7>:	push   %fs
+   0x0000776d <+9>:	push   %edx
+   0x0000776e <+10>:	push   %ecx
+   0x0000776f <+11>:	push   %ebx
+   0x00007770 <+12>:	mov    $0x10,%edx
+   0x00007775 <+17>:	mov    %edx,%ds
+   0x00007777 <+19>:	mov    %edx,%es
+   0x00007779 <+21>:	mov    $0x17,%edx
+   0x0000777e <+26>:	mov    %edx,%fs
+   0x00007780 <+28>:	call   *0x1e8c0(,%eax,4)
+   0x00007787 <+35>:	push   %eax
+   0x00007788 <+36>:	mov    0x1fa20,%eax
+   0x0000778d <+41>:	cmpl   $0x0,(%eax)
+   0x00007790 <+44>:	jne    0x7758 <reschedule>
+   0x00007792 <+46>:	cmpl   $0x0,0x4(%eax)
+   0x00007796 <+50>:	je     0x7758 <reschedule>
+End of assembler dump.
+(gdb) b * 7780
+Breakpoint 4 at 0x1e64
+(gdb) disable 4
+(gdb) b * 0x7780
+Note: breakpoint 3 also set at pc 0x7780.
+Breakpoint 5 at 0x7780
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x00007780 in system_call ()
+1: current->pid = 0
+2: $eax = 29
+(gdb) si
+sys_pause () at sched.c:147
+147		current->state = TASK_INTERRUPTIBLE;
+1: current->pid = 0
+2: $eax = 29
+(gdb) c
+Continuing.
+
+Breakpoint 2, 0x00007764 in system_call ()
+1: current->pid = 1
+2: $eax = 48
+(gdb) disass
+Dump of assembler code for function system_call:
+=> 0x00007764 <+0>:	cmp    $0x55,%eax
+   0x00007767 <+3>:	ja     0x7750 <bad_sys_call>
+   0x00007769 <+5>:	push   %ds
+   0x0000776a <+6>:	push   %es
+   0x0000776b <+7>:	push   %fs
+   0x0000776d <+9>:	push   %edx
+   0x0000776e <+10>:	push   %ecx
+   0x0000776f <+11>:	push   %ebx
+   0x00007770 <+12>:	mov    $0x10,%edx
+   0x00007775 <+17>:	mov    %edx,%ds
+   0x00007777 <+19>:	mov    %edx,%es
+   0x00007779 <+21>:	mov    $0x17,%edx
+   0x0000777e <+26>:	mov    %edx,%fs
+   0x00007780 <+28>:	call   *0x1e8c0(,%eax,4)
+   0x00007787 <+35>:	push   %eax
+   0x00007788 <+36>:	mov    0x1fa20,%eax
+   0x0000778d <+41>:	cmpl   $0x0,(%eax)
+   0x00007790 <+44>:	jne    0x7758 <reschedule>
+   0x00007792 <+46>:	cmpl   $0x0,0x4(%eax)
+   0x00007796 <+50>:	je     0x7758 <reschedule>
+End of assembler dump.
+(gdb) b * -[K0x7780
+Note: breakpoints 3 and 5 also set at pc 0x7780.
+Breakpoint 6 at 0x7780
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x00007780 in system_call ()
+1: current->pid = 1
+2: $eax = 48
+(gdb) si
+sys_signal (signum=14, handler=1, restorer=14) at signal.c:59
+59	{
+1: current->pid = 1
+2: $eax = 48
+(gdb) 
