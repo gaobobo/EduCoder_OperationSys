@@ -10,11 +10,11 @@ mkdir -p /tmp/3.3.2.kehou-1
 
 case $DownloadSite in
     Gitee)
-        wget -O /tmp/3.3.2.kehou-1/第四关.txt https://gitee.com/coconut_floss/EduCoder_OperationSys/raw/main/Source/3.3.2.kehou-1/第四关.txt
+        wget -O /tmp/3.3.2.kehou-1/第五关.txt https://gitee.com/coconut_floss/EduCoder_OperationSys/raw/main/Source/3.3.2.kehou-1/第五关.txt
         wget -O /tmp/3.3.2.kehou-1/gdb.log https://gitee.com/coconut_floss/EduCoder_OperationSys/raw/main/Source/3.3.2.kehou-1/gdb.log
         ;;
     Github)
-        wget -O /tmp/3.3.2.kehou-1/第四关.txt https://raw.githubusercontent.com/gaobobo/EduCoder_OperationSys/main/Source/3.3.2.kehou-1/第四关.txt
+        wget -O /tmp/3.3.2.kehou-1/第五关.txt https://raw.githubusercontent.com/gaobobo/EduCoder_OperationSys/main/Source/3.3.2.kehou-1/第五关.txt
         wget -O /tmp/3.3.2.kehou-1/gdb.log https://raw.githubusercontent.com/gaobobo/EduCoder_OperationSys/main/Source/3.3.2.kehou-1/gdb.log
         ;;
     *)
@@ -24,7 +24,7 @@ case $DownloadSite in
         ;;
 esac
 
-mv -f /tmp/3.3.2.kehou-1/第四关.txt /data/workspace/myshixun/第四关.txt
+mv -f /tmp/3.3.2.kehou-1/第五关.txt /data/workspace/myshixun/第五关.txt
 mv -f /tmp/3.3.2.kehou-1/gdb.log /root/gdb.log
 
 return 0
