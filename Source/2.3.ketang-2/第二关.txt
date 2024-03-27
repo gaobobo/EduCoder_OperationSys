@@ -1,0 +1,8 @@
+可执行文件ls运行时（无参数），会依次执行下面这些系统调用：
+1.(time)(ioctl)(brk)(brk)(brk)
+2.(brk)(brk)(open)(fstat)(brk)
+3.(read)(read)(close)(ioctl)(write)
+4.(write)(close)(exit)()()
+注：
+·()中每个系统调用使用英文逗号分隔开；
+·每一个()中只写一个系统调用的名字。

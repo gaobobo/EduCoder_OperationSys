@@ -1,0 +1,203 @@
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.5) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from tools/system...done.
+0x0000fff0 in permission (
+    inode=0x0 <startup_32>, mask=0)
+    at namei.c:42
+42		int mode = inode->i_mode;
+Breakpoint 1 at 0x6770: file init/main.c, line 105.
+
+Breakpoint 1, main () at init/main.c:105
+105	{			/* The startup routine assumes (well, ...) this */
+1: current->pid = 0
+(gdb) b do_execve 
+Breakpoint 2 at 0xefb9: file exec.c, line 190.
+(gdb) c
+Continuing.
+
+Breakpoint 2, do_execve (eip=0xffbfec, 
+    tmp=30391, 
+    filename=0x1848c "/bin/sh", 
+    argv=0x1e700 <argv_rc>, 
+    envp=0x1e708 <envp_rc>) at exec.c:190
+190	{
+1: current->pid = 2
+(gdb) c
+Continuing.
+
+Breakpoint 2, do_execve (eip=0xfbdfec, 
+    tmp=30391, filename=0x3ae80 "", 
+    argv=0x37dd0, envp=0x3ffc0)
+    at exec.c:190
+190	{
+1: current->pid = 3
+(gdb) c
+Continuing.
+
+Breakpoint 2, do_execve (eip=0xffdfec, 
+    tmp=30391, 
+    filename=0x1848c "/bin/sh", 
+    argv=0x1e714 <argv>, 
+    envp=0x1e71c <envp>) at exec.c:190
+190	{
+1: current->pid = 4
+(gdb) c
+Continuing.
+
+Breakpoint 2, do_execve (eip=0xfb6fec, 
+    tmp=30391, 
+    filename=0x37d60 "d}\003", 
+    argv=0x3a298, envp=0x3ffc0)
+    at exec.c:190
+190	{
+1: current->pid = 6
+(gdb) b sys_t[K[K[K[Kystem_call if current->pid == 6
+Breakpoint 3 at 0x7694
+(gdb) ddis[K[K[K[Kdisplay sys_c
+sys_call_table  sys_chroot
+sys_chdir       sys_close
+sys_chmod       sys_creat
+sys_chown       
+(gdb) display sys_call_table [$eax]
+2: sys_call_table [$eax] = (fn_ptr) 0xffffff83
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x00007694 in system_call
+    ()
+1: current->pid = 6
+2: sys_call_table [$eax] = (fn_ptr) 0x91a5 <sys_time>
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x00007694 in system_call
+    ()
+1: current->pid = 6
+2: sys_call_table [$eax] = (fn_ptr) 0x126b3 <sys_ioctl>
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x00007694 in system_call
+    ()
+1: current->pid = 6
+2: sys_call_table [$eax] = (fn_ptr) 0x9469 <sys_brk>
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x00007694 in system_call
+    ()
+1: current->pid = 6
+2: sys_call_table [$eax] = (fn_ptr) 0x9469 <sys_brk>
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x00007694 in system_call
+    ()
+1: current->pid = 6
+2: sys_call_table [$eax] = (fn_ptr) 0x9469 <sys_brk>
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x00007694 in system_call
+    ()
+1: current->pid = 6
+2: sys_call_table [$eax] = (fn_ptr) 0x9469 <sys_brk>
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x00007694 in system_call
+    ()
+1: current->pid = 6
+2: sys_call_table [$eax] = (fn_ptr) 0x9469 <sys_brk>
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x00007694 in system_call
+    ()
+1: current->pid = 6
+2: sys_call_table [$eax] = (fn_ptr) 0xb3e0 <sys_open>
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x00007694 in system_call
+    ()
+1: current->pid = 6
+2: sys_call_table [$eax] = (fn_ptr) 0xe9a9 <sys_fstat>
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x00007694 in system_call
+    ()
+1: current->pid = 6
+2: sys_call_table [$eax] = (fn_ptr) 0x9469 <sys_brk>
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x00007694 in system_call
+    ()
+1: current->pid = 6
+2: sys_call_table [$eax] = (fn_ptr) 0xb88e <sys_read>
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x00007694 in system_call
+    ()
+1: current->pid = 6
+2: sys_call_table [$eax] = (fn_ptr) 0xb88e <sys_read>
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x00007694 in system_call
+    ()
+1: current->pid = 6
+2: sys_call_table [$eax] = (fn_ptr) 0xb698 <sys_close>
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x00007694 in system_call
+    ()
+1: current->pid = 6
+2: sys_call_table [$eax] = (fn_ptr) 0x126b3 <sys_ioctl>
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x00007694 in system_call
+    ()
+1: current->pid = 6
+2: sys_call_table [$eax] = (fn_ptr) 0xba63 <sys_write>
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x00007694 in system_call
+    ()
+1: current->pid = 6
+2: sys_call_table [$eax] = (fn_ptr) 0xba63 <sys_write>
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x00007694 in system_call
+    ()
+1: current->pid = 6
+2: sys_call_table [$eax] = (fn_ptr) 0xb698 <sys_close>
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x00007694 in system_call
+    ()
+1: current->pid = 6
+2: sys_call_table [$eax] = (fn_ptr) 0x9cbb <sys_exit>
+(gdb) c
+Continuing.
+[K(gdb) 
