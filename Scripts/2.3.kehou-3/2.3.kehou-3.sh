@@ -30,8 +30,8 @@ rm -rf /home/headless/os/linux-0.11-lab/0/
 cd ~/os/linux-0.11-lab
 tar -zxvf ../0.tgz 0/
 
-mv -f /tmp/2.3.kehou-3/signal.c /home/headless/os/linux-0.11-lab/1/linux/kernel/signal.c
-mv -f /tmp/2.3.kehou-3/system_call.s /home/headless/os/linux-0.11-lab/1/linux/kernel/system_call.s
+mv -f /tmp/2.3.kehou-3/signal.c /home/headless/os/linux-0.11-lab/0/linux/kernel/signal.c
+mv -f /tmp/2.3.kehou-3/system_call.s /home/headless/os/linux-0.11-lab/0/linux/kernel/system_call.s
 
 cd  ~/os/linux-0.11-lab/0/linux/
 make
