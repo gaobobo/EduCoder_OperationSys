@@ -1,0 +1,41 @@
+00000000000i[      ] BXSHARE not set. using compile time default '/usr/local/share/bochs'
+00000000000i[      ] reading configuration from conf/0.11.bxrc
+00000000000i[      ] installing term module as the Bochs GUI
+00000000000i[      ] using log file bochsout.txt
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Aug 26 2020 at 03:56:16
+========================================================================
+[?1049h[1;24r(B[m[4l[?7h[39;49m[?12;25h[?1h=[39;49m[37m[40m[H[2J[39;49m[37m[40m[H[2J[17d[37m[40m[J[H(B[0;1m[36m[40mPlex86/Bochs VGABios (PCI) current-cvs 08 Jul 2014
+This VGA/VBE Bios is released under the GNU LGPL
+
+Please visit :
+ . http://bochs.sourceforge.net
+ . http://www.nongnu.org/vgabios
+
+Bochs VBE Display Adapter enabled
+
+(B[0m[37m[40mBochs BIOS - build: 02/16/17
+$Revision: 13073 $ $Date: 2017-02-16 22:43:52 +0100 (Do, 16. Feb 2017) $
+Options: apmbios pcibios pnpbios eltorito rombios32
+
+ata0 master: Generic 1234 ATA-6 Hard-Disk (  10 MBytes)
+
+Press F12 for boot menu.
+
+(B[m[39;49m[37m[40m[37m[40mBooting from Floppy...
+
+Loading system ...
+
+(B[m[39;49m[37m[40m[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l
+
+[2S[20d[37m[40mPartition table ok.
+5085/10240 free blocks
+3217/3424 free inodes
+3437 buffers = 3519488 bytes buffer space
+Free mem: 12582912 bytes(B[m[39;49m[37m[40m[?12;25h
+[C[37m[40mOk.[80G(B[m[39;49m[37m[40m
+[37m[40mGetjiffies: -1[80G(B[m[39;49m[37m[40m
+[37m[40mGetjiffies: -1[80G(B[m[39;49m[37m[40m
+[37m[40mGetjiffies: -1[80G(B[m[39;49m[37m[40m[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l[?12;25h[?25l
