@@ -1,0 +1,5 @@
+从系统开机直到输出第4个字符‘1’，系统依次执行了哪些系统调用：
+注：按照（进程号，系统调用名）的格式填写，按顺序填写，五个一行。
+1.(0,fork)(0,pause)(1,signal)(1,alarm)(1,pause)
+2.(0,pause)(1,alarm)(1,pause)(0,pause)(1,alarm)
+3.(1,pause)(0,pause)(1,alarm)(,)(,)
