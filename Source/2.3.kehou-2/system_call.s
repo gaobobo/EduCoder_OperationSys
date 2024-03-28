@@ -91,6 +91,11 @@ system_call:
 	mov %dx,%es
 	movl $0x17,%edx		# fs points to local data space
 	mov %dx,%fs
+
+	pushl %eax
+	call myfunc
+	popl %eax
+	
 	call sys_call_table(,%eax,4)
 	pushl %eax
 	movl current,%eax

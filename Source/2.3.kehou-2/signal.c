@@ -127,3 +127,17 @@ void do_signal(long signr,long eax, long ebx, long ecx, long edx,
 	put_fs_long(old_eip,tmp_esp++);
 	current->blocked |= sa->sa_mask;
 }
+
+extern int pre_num = -1;
+extern int pre_pid = -1;
+
+void myfunc(int num) {
+	int pid = sys_getpid();
+	if (pre_num == num && num == 29 && pre_pid == pid && pid == 0) {
+		return;
+	} else {
+		printk("%d(%d)",num,sys_getpid());
+		pre_num = num;
+		pre_pid = pid;
+	}
+}
