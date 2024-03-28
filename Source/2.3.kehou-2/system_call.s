@@ -67,6 +67,7 @@ nr_system_calls = 86  /* 72 */
 .globl system_call,sys_fork,timer_interrupt,sys_execve
 .globl hd_interrupt,floppy_interrupt,parallel_interrupt
 .globl device_not_available, coprocessor_error
+.globl display_interrupt, task0, task1				# by wyj
 
 .align 4
 bad_sys_call:
@@ -288,3 +289,93 @@ parallel_interrupt:
 	outb %al,$0x20
 	popl %eax
 	iret
+
+/* begin */  /* wyj */
+# -----------------------------------
+display_char:
+	push %gs
+	pushl %ecx
+	pushl %ebx
+#	pushl %eax
+##	mov $SCRN_SEL, %ebx
+##	mov %bx, %gs
+	movl scr_loc, %ebx
+	shl $1, %ebx
+	movl %ebx, %ecx
+	add $0xb8000, %ecx	# start address of display memory 
+##	movb %al, %gs:(%ebx)
+	movb %al, (%ecx)	# use %ds directly
+	shr $1, %ebx
+	incl %ebx
+	cmpl $2000, %ebx	# 2000: the num of displayed chars
+	jb 1f
+	movl $0, %ebx
+1:	movl %ebx, scr_loc	
+#	popl %eax
+	popl %ebx
+	popl %ecx
+	pop %gs
+	ret
+
+/* system call handler */
+.align 4
+# -----------------------------------
+display_interrupt:
+	push %ds
+	pushl %edx
+	pushl %ecx
+	pushl %ebx
+	pushl %eax
+	movl $0x10, %edx
+	mov %dx, %ds
+	call display_char
+	popl %eax
+	popl %ebx
+	popl %ecx
+	popl %edx
+	pop %ds
+	iret
+
+# -----------------------------------
+##current:.long 0
+scr_loc:.long 0
+
+# -----------------------------------
+task0:
+	movb $48, %al              /* print '0' */
+	int $0x81
+	movl $0xffff, %ecx
+1:	loop 1b
+
+	movb $32, %al              /* print ' ' */
+	int $0x81
+	movl $0xffff, %ecx
+1:	loop 1b
+
+	movb $32, %al              /* print ' ' */
+	int $0x81
+	movl $0xffff, %ecx
+1:	loop 1b
+
+	ret
+
+# -----------------------------------
+task1:
+	movb $49, %al              /* print '1' */
+	int $0x81
+	movl $0xffff, %ecx
+1:	loop 1b
+
+	movb $32, %al              /* print ' ' */
+	int $0x81
+	movl $0xffff, %ecx
+1:	loop 1b
+
+	movb $32, %al              /* print ' ' */
+	int $0x81
+	movl $0xffff, %ecx
+1:	loop 1b
+
+	ret
+
+/* end */
