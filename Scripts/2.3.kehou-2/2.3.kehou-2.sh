@@ -38,4 +38,8 @@ mv -f /tmp/2.3.kehou-2/system_call.s /home/headless/os/linux-0.11-lab/1/linux/ke
 cd  ~/os/linux-0.11-lab/1/linux/
 make
 
+cd ~/os/linux-0.11-lab
+rm -rf cur
+ln -s 1 cur
+
 return 0
