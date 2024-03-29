@@ -1,0 +1,56 @@
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Aug 21 2020 at 09:28:41
+========================================================================
+Next at t=0
+(0) [0x0000fffffff0] f000:fff0 (unk. ctxt): jmpf 0xf000:e05b          ; ea5be000f0
+<bochs:1> <bochs:2> (0) Breakpoint 1, 0x00006f33 in ?? ()
+Next at t=116315047
+(0) [0x000000006f33] 0008:00006f33 (unk. ctxt): jmpf ss:[esp+8]           ; ff6c2408
+<bochs:3> es:0x0010, dh=0x00c09300, dl=0x00000fff, valid=1
+	Data segment, base=0x00000000, limit=0x00ffffff, Read/Write, Accessed
+cs:0x0008, dh=0x00c09b00, dl=0x00000fff, valid=1
+	Code segment, base=0x00000000, limit=0x00ffffff, Execute/Read, Non-Conforming, Accessed, 32-bit
+ss:0x0010, dh=0x00c09300, dl=0x00000fff, valid=7
+	Data segment, base=0x00000000, limit=0x00ffffff, Read/Write, Accessed
+ds:0x0010, dh=0x00c09300, dl=0x00000fff, valid=7
+	Data segment, base=0x00000000, limit=0x00ffffff, Read/Write, Accessed
+fs:0x0017, dh=0x00c0f300, dl=0x0000009f, valid=1
+	Data segment, base=0x00000000, limit=0x0009ffff, Read/Write, Accessed
+gs:0x0017, dh=0x00c0f300, dl=0x0000009f, valid=1
+	Data segment, base=0x00000000, limit=0x0009ffff, Read/Write, Accessed
+ldtr:0x0028, dh=0x00008201, dl=0xecf00068, valid=1
+tr:0x0020, dh=0x00008b01, dl=0xed080068, valid=1
+gdtr:base=0x00005cc0, limit=0x7ff
+idtr:base=0x000054c0, limit=0x7ff
+<bochs:4> [bochs]:
+0x00005cc0 <bogus+       0>:	0x00000000	0x00000000	0x00000fff	0x00c09b00
+0x00005cd0 <bogus+      16>:	0x00000fff	0x00c09300	0x00000000	0x00000000
+0x00005ce0 <bogus+      32>:	0xed080068	0x00008b01	0xecf00068	0x00008201
+0x00005cf0 <bogus+      48>:	0xf2e80068	0x000089ff
+<bochs:5> <bochs:6> (0) Breakpoint 1, 0x00006f33 in ?? ()
+Next at t=116515217
+(0) [0x000000006f33] 0008:00006f33 (unk. ctxt): jmpf ss:[esp+8]           ; ff6c2408
+<bochs:7> es:0x0010, dh=0x00c09300, dl=0x00000fff, valid=1
+	Data segment, base=0x00000000, limit=0x00ffffff, Read/Write, Accessed
+cs:0x0008, dh=0x00c09b00, dl=0x00000fff, valid=1
+	Code segment, base=0x00000000, limit=0x00ffffff, Execute/Read, Non-Conforming, Accessed, 32-bit
+ss:0x0010, dh=0x00c09300, dl=0x00000fff, valid=7
+	Data segment, base=0x00000000, limit=0x00ffffff, Read/Write, Accessed
+ds:0x0010, dh=0x00c09300, dl=0x00000fff, valid=7
+	Data segment, base=0x00000000, limit=0x00ffffff, Read/Write, Accessed
+fs:0x0017, dh=0x04c0f300, dl=0x0000009f, valid=1
+	Data segment, base=0x04000000, limit=0x0009ffff, Read/Write, Accessed
+gs:0x0017, dh=0x04c0f300, dl=0x0000009f, valid=1
+	Data segment, base=0x04000000, limit=0x0009ffff, Read/Write, Accessed
+ldtr:0x0038, dh=0x000082ff, dl=0xf2d00068, valid=1
+tr:0x0030, dh=0x00008bff, dl=0xf2e80068, valid=1
+gdtr:base=0x00005cc0, limit=0x7ff
+idtr:base=0x000054c0, limit=0x7ff
+<bochs:8> [bochs]:
+0x00005cc0 <bogus+       0>:	0x00000000	0x00000000	0x00000fff	0x00c09b00
+0x00005cd0 <bogus+      16>:	0x00000fff	0x00c09300	0x00000000	0x00000000
+0x00005ce0 <bogus+      32>:	0xed080068	0x00008901	0xecf00068	0x00008201
+0x00005cf0 <bogus+      48>:	0xf2e80068	0x00008bff
+<bochs:9> 
