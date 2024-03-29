@@ -22,6 +22,8 @@ case $DownloadSite in
         ;;
 esac
 
+rm -rf /home/headless/Desktop/workspace/myshixun/3.c
+
 mv -f /tmp/5.ketang-3/9.c /home/headless/Desktop/workspace/myshixun/9.c
 
 return 0
