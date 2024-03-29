@@ -1,0 +1,375 @@
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.5) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from tools/system...done.
+0x0000fff0 in sys_pipe (fildes=0x0 <startup_32>) at pipe.c:93
+93			current->filp[fd[0]]=NULL;
+Breakpoint 1 at 0x67a7: file init/main.c, line 112.
+
+Breakpoint 1, main () at init/main.c:112
+112	{			/* The startup routine assumes (well, ...) this */
+1: current->pid = 0
+(gdb) b sched.c:136
+Breakpoint 2 at 0x6eb8: file sched.c, line 136.
+(gdb) c
+Continuing.
+
+Breakpoint 2, schedule () at sched.c:136
+136			if (c) break;
+1: current->pid = 0
+(gdb) p next
+$1 = 1
+(gdb) p c
+$2 = 15
+(gdb) p current->pid 
+$3 = 0
+(gdb) p current->counter 
+$4 = 13
+(gdb) n
+142		switch_to(next);
+1: current->pid = 0
+(gdb) disass $eip
+Dump of assembler code for function schedule:
+   0x00006d93 <+0>:	sub    $0x20,%esp
+   0x00006d96 <+3>:	movl   $0x1fb3c,0x10(%esp)
+   0x00006d9e <+11>:	jmp    0x6e3b <schedule+168>
+   0x00006da3 <+16>:	mov    0x10(%esp),%eax
+   0x00006da7 <+20>:	mov    (%eax),%eax
+   0x00006da9 <+22>:	test   %eax,%eax
+   0x00006dab <+24>:	je     0x6e36 <schedule+163>
+   0x00006db1 <+30>:	mov    0x10(%esp),%eax
+   0x00006db5 <+34>:	mov    (%eax),%eax
+   0x00006db7 <+36>:	mov    0x24c(%eax),%eax
+   0x00006dbd <+42>:	test   %eax,%eax
+   0x00006dbf <+44>:	je     0x6dfb <schedule+104>
+   0x00006dc1 <+46>:	mov    0x10(%esp),%eax
+   0x00006dc5 <+50>:	mov    (%eax),%eax
+   0x00006dc7 <+52>:	mov    0x24c(%eax),%edx
+   0x00006dcd <+58>:	mov    0x227c0,%eax
+   0x00006dd2 <+63>:	cmp    %eax,%edx
+   0x00006dd4 <+65>:	jge    0x6dfb <schedule+104>
+   0x00006dd6 <+67>:	mov    0x10(%esp),%eax
+   0x00006dda <+71>:	mov    (%eax),%eax
+   0x00006ddc <+73>:	mov    0x10(%esp),%edx
+   0x00006de0 <+77>:	mov    (%edx),%edx
+   0x00006de2 <+79>:	mov    0xc(%edx),%edx
+   0x00006de5 <+82>:	or     $0x20,%dh
+   0x00006de8 <+85>:	mov    %edx,0xc(%eax)
+   0x00006deb <+88>:	mov    0x10(%esp),%eax
+   0x00006def <+92>:	mov    (%eax),%eax
+   0x00006df1 <+94>:	movl   $0x0,0x24c(%eax)
+   0x00006dfb <+104>:	mov    0x10(%esp),%eax
+   0x00006dff <+108>:	mov    (%eax),%eax
+   0x00006e01 <+110>:	mov    0xc(%eax),%edx
+   0x00006e04 <+113>:	mov    0x10(%esp),%eax
+   0x00006e08 <+117>:	mov    (%eax),%eax
+   0x00006e0a <+119>:	mov    0x210(%eax),%eax
+   0x00006e10 <+125>:	and    $0xfffbfeff,%eax
+   0x00006e15 <+130>:	not    %eax
+   0x00006e17 <+132>:	and    %edx,%eax
+   0x00006e19 <+134>:	test   %eax,%eax
+   0x00006e1b <+136>:	je     0x6e36 <schedule+163>
+   0x00006e1d <+138>:	mov    0x10(%esp),%eax
+   0x00006e21 <+142>:	mov    (%eax),%eax
+   0x00006e23 <+144>:	mov    (%eax),%eax
+   0x00006e25 <+146>:	cmp    $0x1,%eax
+   0x00006e28 <+149>:	jne    0x6e36 <schedule+163>
+   0x00006e2a <+151>:	mov    0x10(%esp),%eax
+   0x00006e2e <+155>:	mov    (%eax),%eax
+   0x00006e30 <+157>:	movl   $0x0,(%eax)
+   0x00006e36 <+163>:	subl   $0x4,0x10(%esp)
+   0x00006e3b <+168>:	cmpl   $0x1fa40,0x10(%esp)
+   0x00006e43 <+176>:	ja     0x6da3 <schedule+16>
+   0x00006e49 <+182>:	movl   $0xffffffff,0x14(%esp)
+   0x00006e51 <+190>:	movl   $0x0,0x18(%esp)
+   0x00006e59 <+198>:	movl   $0x40,0x1c(%esp)
+   0x00006e61 <+206>:	movl   $0x1fb40,0x10(%esp)
+   0x00006e69 <+214>:	jmp    0x6eac <schedule+281>
+   0x00006e6b <+216>:	subl   $0x4,0x10(%esp)
+   0x00006e70 <+221>:	mov    0x10(%esp),%eax
+   0x00006e74 <+225>:	mov    (%eax),%eax
+   0x00006e76 <+227>:	test   %eax,%eax
+   0x00006e78 <+229>:	jne    0x6e7c <schedule+233>
+   0x00006e7a <+231>:	jmp    0x6eac <schedule+281>
+   0x00006e7c <+233>:	mov    0x10(%esp),%eax
+   0x00006e80 <+237>:	mov    (%eax),%eax
+   0x00006e82 <+239>:	mov    (%eax),%eax
+   0x00006e84 <+241>:	test   %eax,%eax
+   0x00006e86 <+243>:	jne    0x6eac <schedule+281>
+   0x00006e88 <+245>:	mov    0x10(%esp),%eax
+   0x00006e8c <+249>:	mov    (%eax),%eax
+   0x00006e8e <+251>:	mov    0x4(%eax),%eax
+   0x00006e91 <+254>:	cmp    0x14(%esp),%eax
+   0x00006e95 <+258>:	jle    0x6eac <schedule+281>
+   0x00006e97 <+260>:	mov    0x10(%esp),%eax
+   0x00006e9b <+264>:	mov    (%eax),%eax
+   0x00006e9d <+266>:	mov    0x4(%eax),%eax
+   0x00006ea0 <+269>:	mov    %eax,0x14(%esp)
+   0x00006ea4 <+273>:	mov    0x1c(%esp),%eax
+   0x00006ea8 <+277>:	mov    %eax,0x18(%esp)
+   0x00006eac <+281>:	subl   $0x1,0x1c(%esp)
+   0x00006eb1 <+286>:	cmpl   $0x0,0x1c(%esp)
+   0x00006eb6 <+291>:	jne    0x6e6b <schedule+216>
+   0x00006eb8 <+293>:	cmpl   $0x0,0x14(%esp)
+   0x00006ebd <+298>:	jne    0x6f08 <schedule+373>
+   0x00006ebf <+300>:	movl   $0x1fb3c,0x10(%esp)
+   0x00006ec7 <+308>:	jmp    0x6ef9 <schedule+358>
+   0x00006ec9 <+310>:	mov    0x10(%esp),%eax
+   0x00006ecd <+314>:	mov    (%eax),%eax
+   0x00006ecf <+316>:	test   %eax,%eax
+   0x00006ed1 <+318>:	je     0x6ef4 <schedule+353>
+   0x00006ed3 <+320>:	mov    0x10(%esp),%eax
+   0x00006ed7 <+324>:	mov    (%eax),%eax
+   0x00006ed9 <+326>:	mov    0x10(%esp),%edx
+   0x00006edd <+330>:	mov    (%edx),%edx
+   0x00006edf <+332>:	mov    0x4(%edx),%edx
+   0x00006ee2 <+335>:	mov    %edx,%ecx
+   0x00006ee4 <+337>:	sar    %ecx
+   0x00006ee6 <+339>:	mov    0x10(%esp),%edx
+   0x00006eea <+343>:	mov    (%edx),%edx
+   0x00006eec <+345>:	mov    0x8(%edx),%edx
+   0x00006eef <+348>:	add    %ecx,%edx
+   0x00006ef1 <+350>:	mov    %edx,0x4(%eax)
+   0x00006ef4 <+353>:	subl   $0x4,0x10(%esp)
+   0x00006ef9 <+358>:	cmpl   $0x1fa40,0x10(%esp)
+   0x00006f01 <+366>:	ja     0x6ec9 <schedule+310>
+   0x00006f03 <+368>:	jmp    0x6e49 <schedule+182>
+   0x00006f08 <+373>:	nop
+=> 0x00006f09 <+374>:	mov    0x18(%esp),%eax
+   0x00006f0d <+378>:	shl    $0x4,%eax
+   0x00006f10 <+381>:	lea    0x20(%eax),%edx
+   0x00006f13 <+384>:	mov    0x18(%esp),%eax
+   0x00006f17 <+388>:	mov    0x1fa40(,%eax,4),%eax
+   0x00006f1e <+395>:	mov    %eax,%ecx
+   0x00006f20 <+397>:	cmp    %ecx,0x1fa20
+   0x00006f26 <+403>:	je     0x6f41 <schedule+430>
+   0x00006f28 <+405>:	mov    %dx,0xc(%esp)
+   0x00006f2d <+410>:	xchg   %ecx,0x1fa20
+   0x00006f33 <+416>:	ljmp   *0x8(%esp)
+   0x00006f37 <+420>:	cmp    %ecx,0x227c8
+   0x00006f3d <+426>:	jne    0x6f41 <schedule+430>
+   0x00006f3f <+428>:	clts   
+   0x00006f41 <+430>:	nop
+   0x00006f42 <+431>:	add    $0x20,%esp
+   0x00006f45 <+434>:	ret    
+End of assembler dump.
+(gdb) b * 0x6f33
+Breakpoint 3 at 0x6f33: file sched.c, line 142.
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x00006f33 in schedule () at sched.c:142
+142		switch_to(next);
+1: current->pid = 1
+(gdb) disass $eip
+Dump of assembler code for function schedule:
+   0x00006d93 <+0>:	sub    $0x20,%esp
+   0x00006d96 <+3>:	movl   $0x1fb3c,0x10(%esp)
+   0x00006d9e <+11>:	jmp    0x6e3b <schedule+168>
+   0x00006da3 <+16>:	mov    0x10(%esp),%eax
+   0x00006da7 <+20>:	mov    (%eax),%eax
+   0x00006da9 <+22>:	test   %eax,%eax
+   0x00006dab <+24>:	je     0x6e36 <schedule+163>
+   0x00006db1 <+30>:	mov    0x10(%esp),%eax
+   0x00006db5 <+34>:	mov    (%eax),%eax
+   0x00006db7 <+36>:	mov    0x24c(%eax),%eax
+   0x00006dbd <+42>:	test   %eax,%eax
+   0x00006dbf <+44>:	je     0x6dfb <schedule+104>
+   0x00006dc1 <+46>:	mov    0x10(%esp),%eax
+   0x00006dc5 <+50>:	mov    (%eax),%eax
+   0x00006dc7 <+52>:	mov    0x24c(%eax),%edx
+   0x00006dcd <+58>:	mov    0x227c0,%eax
+   0x00006dd2 <+63>:	cmp    %eax,%edx
+   0x00006dd4 <+65>:	jge    0x6dfb <schedule+104>
+   0x00006dd6 <+67>:	mov    0x10(%esp),%eax
+   0x00006dda <+71>:	mov    (%eax),%eax
+   0x00006ddc <+73>:	mov    0x10(%esp),%edx
+   0x00006de0 <+77>:	mov    (%edx),%edx
+   0x00006de2 <+79>:	mov    0xc(%edx),%edx
+   0x00006de5 <+82>:	or     $0x20,%dh
+   0x00006de8 <+85>:	mov    %edx,0xc(%eax)
+   0x00006deb <+88>:	mov    0x10(%esp),%eax
+   0x00006def <+92>:	mov    (%eax),%eax
+   0x00006df1 <+94>:	movl   $0x0,0x24c(%eax)
+   0x00006dfb <+104>:	mov    0x10(%esp),%eax
+   0x00006dff <+108>:	mov    (%eax),%eax
+   0x00006e01 <+110>:	mov    0xc(%eax),%edx
+   0x00006e04 <+113>:	mov    0x10(%esp),%eax
+   0x00006e08 <+117>:	mov    (%eax),%eax
+   0x00006e0a <+119>:	mov    0x210(%eax),%eax
+   0x00006e10 <+125>:	and    $0xfffbfeff,%eax
+   0x00006e15 <+130>:	not    %eax
+   0x00006e17 <+132>:	and    %edx,%eax
+   0x00006e19 <+134>:	test   %eax,%eax
+   0x00006e1b <+136>:	je     0x6e36 <schedule+163>
+   0x00006e1d <+138>:	mov    0x10(%esp),%eax
+   0x00006e21 <+142>:	mov    (%eax),%eax
+   0x00006e23 <+144>:	mov    (%eax),%eax
+   0x00006e25 <+146>:	cmp    $0x1,%eax
+   0x00006e28 <+149>:	jne    0x6e36 <schedule+163>
+   0x00006e2a <+151>:	mov    0x10(%esp),%eax
+   0x00006e2e <+155>:	mov    (%eax),%eax
+   0x00006e30 <+157>:	movl   $0x0,(%eax)
+   0x00006e36 <+163>:	subl   $0x4,0x10(%esp)
+   0x00006e3b <+168>:	cmpl   $0x1fa40,0x10(%esp)
+   0x00006e43 <+176>:	ja     0x6da3 <schedule+16>
+   0x00006e49 <+182>:	movl   $0xffffffff,0x14(%esp)
+   0x00006e51 <+190>:	movl   $0x0,0x18(%esp)
+   0x00006e59 <+198>:	movl   $0x40,0x1c(%esp)
+   0x00006e61 <+206>:	movl   $0x1fb40,0x10(%esp)
+   0x00006e69 <+214>:	jmp    0x6eac <schedule+281>
+   0x00006e6b <+216>:	subl   $0x4,0x10(%esp)
+   0x00006e70 <+221>:	mov    0x10(%esp),%eax
+   0x00006e74 <+225>:	mov    (%eax),%eax
+   0x00006e76 <+227>:	test   %eax,%eax
+   0x00006e78 <+229>:	jne    0x6e7c <schedule+233>
+   0x00006e7a <+231>:	jmp    0x6eac <schedule+281>
+   0x00006e7c <+233>:	mov    0x10(%esp),%eax
+   0x00006e80 <+237>:	mov    (%eax),%eax
+   0x00006e82 <+239>:	mov    (%eax),%eax
+   0x00006e84 <+241>:	test   %eax,%eax
+   0x00006e86 <+243>:	jne    0x6eac <schedule+281>
+   0x00006e88 <+245>:	mov    0x10(%esp),%eax
+   0x00006e8c <+249>:	mov    (%eax),%eax
+   0x00006e8e <+251>:	mov    0x4(%eax),%eax
+   0x00006e91 <+254>:	cmp    0x14(%esp),%eax
+   0x00006e95 <+258>:	jle    0x6eac <schedule+281>
+   0x00006e97 <+260>:	mov    0x10(%esp),%eax
+   0x00006e9b <+264>:	mov    (%eax),%eax
+   0x00006e9d <+266>:	mov    0x4(%eax),%eax
+   0x00006ea0 <+269>:	mov    %eax,0x14(%esp)
+   0x00006ea4 <+273>:	mov    0x1c(%esp),%eax
+   0x00006ea8 <+277>:	mov    %eax,0x18(%esp)
+   0x00006eac <+281>:	subl   $0x1,0x1c(%esp)
+   0x00006eb1 <+286>:	cmpl   $0x0,0x1c(%esp)
+   0x00006eb6 <+291>:	jne    0x6e6b <schedule+216>
+   0x00006eb8 <+293>:	cmpl   $0x0,0x14(%esp)
+   0x00006ebd <+298>:	jne    0x6f08 <schedule+373>
+   0x00006ebf <+300>:	movl   $0x1fb3c,0x10(%esp)
+   0x00006ec7 <+308>:	jmp    0x6ef9 <schedule+358>
+   0x00006ec9 <+310>:	mov    0x10(%esp),%eax
+   0x00006ecd <+314>:	mov    (%eax),%eax
+   0x00006ecf <+316>:	test   %eax,%eax
+   0x00006ed1 <+318>:	je     0x6ef4 <schedule+353>
+   0x00006ed3 <+320>:	mov    0x10(%esp),%eax
+   0x00006ed7 <+324>:	mov    (%eax),%eax
+   0x00006ed9 <+326>:	mov    0x10(%esp),%edx
+   0x00006edd <+330>:	mov    (%edx),%edx
+   0x00006edf <+332>:	mov    0x4(%edx),%edx
+   0x00006ee2 <+335>:	mov    %edx,%ecx
+   0x00006ee4 <+337>:	sar    %ecx
+   0x00006ee6 <+339>:	mov    0x10(%esp),%edx
+   0x00006eea <+343>:	mov    (%edx),%edx
+   0x00006eec <+345>:	mov    0x8(%edx),%edx
+   0x00006eef <+348>:	add    %ecx,%edx
+   0x00006ef1 <+350>:	mov    %edx,0x4(%eax)
+   0x00006ef4 <+353>:	subl   $0x4,0x10(%esp)
+   0x00006ef9 <+358>:	cmpl   $0x1fa40,0x10(%esp)
+   0x00006f01 <+366>:	ja     0x6ec9 <schedule+310>
+   0x00006f03 <+368>:	jmp    0x6e49 <schedule+182>
+   0x00006f08 <+373>:	nop
+   0x00006f09 <+374>:	mov    0x18(%esp),%eax
+   0x00006f0d <+378>:	shl    $0x4,%eax
+   0x00006f10 <+381>:	lea    0x20(%eax),%edx
+   0x00006f13 <+384>:	mov    0x18(%esp),%eax
+   0x00006f17 <+388>:	mov    0x1fa40(,%eax,4),%eax
+   0x00006f1e <+395>:	mov    %eax,%ecx
+   0x00006f20 <+397>:	cmp    %ecx,0x1fa20
+   0x00006f26 <+403>:	je     0x6f41 <schedule+430>
+   0x00006f28 <+405>:	mov    %dx,0xc(%esp)
+   0x00006f2d <+410>:	xchg   %ecx,0x1fa20
+=> 0x00006f33 <+416>:	ljmp   *0x8(%esp)
+   0x00006f37 <+420>:	cmp    %ecx,0x227c8
+   0x00006f3d <+426>:	jne    0x6f41 <schedule+430>
+   0x00006f3f <+428>:	clts   
+   0x00006f41 <+430>:	nop
+   0x00006f42 <+431>:	add    $0x20,%esp
+   0x00006f45 <+434>:	ret    
+End of assembler dump.
+(gdb) info reg
+eax            0xfff000	16773120
+ecx            0x1ea20	125472
+edx            0x30	48
+ebx            0x3	3
+esp            0x1f9cc	0x1f9cc <init_task+4012>
+ebp            0x25768	0x25768 <user_stack+4072>
+esi            0xe0000	917504
+edi            0xffc	4092
+eip            0x6f33	0x6f33 <schedule+416>
+eflags         0x283	[ CF SF IF ]
+cs             0x8	8
+ss             0x10	16
+ds             0x10	16
+es             0x10	16
+fs             0x17	23
+gs             0x17	23
+(gdb) p/x task[0]->tss
+$5 = {back_link = 0x0, esp0 = 0x1fa20, ss0 = 0x10, esp1 = 0x0, ss1 = 0x0, 
+  esp2 = 0x0, ss2 = 0x0, cr3 = 0x0, eip = 0x0, eflags = 0x0, eax = 0x0, 
+  ecx = 0x0, edx = 0x0, ebx = 0x0, esp = 0x0, ebp = 0x0, esi = 0x0, edi = 0x0, 
+  es = 0x17, cs = 0x17, ss = 0x17, ds = 0x17, fs = 0x17, gs = 0x17, 
+  ldt = 0x28, trace_bitmap = 0x80000000, i387 = {cwd = 0x0, swd = 0x0, 
+    twd = 0x0, fip = 0x0, fcs = 0x0, foo = 0x0, fos = 0x0, st_space = {
+      0x0 <repeats 20 times>}}}
+(gdb) p/x task[1]->tss
+$6 = {back_link = 0x0, esp0 = 0x1000000, ss0 = 0x10, esp1 = 0x0, ss1 = 0x0, 
+  esp2 = 0x0, ss2 = 0x0, cr3 = 0x0, eip = 0x690a, eflags = 0x202, eax = 0x0, 
+  ecx = 0x55f0, edx = 0x21, ebx = 0x3, esp = 0x25740, ebp = 0x25768, 
+  esi = 0xe0000, edi = 0xffc, es = 0x17, cs = 0xf, ss = 0x17, ds = 0x17, 
+  fs = 0x17, gs = 0x17, ldt = 0x38, trace_bitmap = 0x80000000, i387 = {
+    cwd = 0x0, swd = 0x0, twd = 0x0, fip = 0x0, fcs = 0x0, foo = 0x0, 
+    fos = 0x0, st_space = {0x0 <repeats 20 times>}}}
+(gdb) si
+0x0000690a in fork () at init/main.c:24
+24	__always_inline _syscall0(int,fork)
+1: current->pid = 1
+(gdb) info reg
+eax            0x0	0
+ecx            0x55f0	22000
+edx            0x21	33
+ebx            0x3	3
+esp            0x25740	0x25740 <user_stack+4032>
+ebp            0x25768	0x25768 <user_stack+4072>
+esi            0xe0000	917504
+edi            0xffc	4092
+eip            0x690a	0x690a <main+355>
+eflags         0x202	[ IF ]
+cs             0xf	15
+ss             0x17	23
+ds             0x17	23
+es             0x17	23
+fs             0x17	23
+gs             0x17	23
+(gdb) p/x task[0]->tss
+$7 = {back_link = 0x0, esp0 = 0x1fa20, ss0 = 0x10, esp1 = 0x0, ss1 = 0x0, 
+  esp2 = 0x0, ss2 = 0x0, cr3 = 0x0, eip = 0x6f37, eflags = 0x283, 
+  eax = 0xfff000, ecx = 0x1ea20, edx = 0x30, ebx = 0x3, esp = 0x1f9cc, 
+  ebp = 0x25768, esi = 0xe0000, edi = 0xffc, es = 0x10, cs = 0x8, ss = 0x10, 
+  ds = 0x10, fs = 0x17, gs = 0x17, ldt = 0x28, trace_bitmap = 0x80000000, 
+  i387 = {cwd = 0x0, swd = 0x0, twd = 0x0, fip = 0x0, fcs = 0x0, foo = 0x0, 
+    fos = 0x0, st_space = {0x0 <repeats 20 times>}}}
+(gdb) p/x task[1]->tss
+$8 = {back_link = 0x0, esp0 = 0x1000000, ss0 = 0x10, esp1 = 0x0, ss1 = 0x0, 
+  esp2 = 0x0, ss2 = 0x0, cr3 = 0x0, eip = 0x690a, eflags = 0x202, eax = 0x0, 
+  ecx = 0x55f0, edx = 0x21, ebx = 0x3, esp = 0x25740, ebp = 0x25768, 
+  esi = 0xe0000, edi = 0xffc, es = 0x17, cs = 0xf, ss = 0x17, ds = 0x17, 
+  fs = 0x17, gs = 0x17, ldt = 0x38, trace_bitmap = 0x80000000, i387 = {
+    cwd = 0x0, swd = 0x0, twd = 0x0, fip = 0x0, fcs = 0x0, foo = 0x0, 
+    fos = 0x0, st_space = {0x0 <repeats 20 times>}}}
+(gdb) q
+A debugging session is active.
+
+	Inferior 1 [Remote target] will be killed.
+
+Quit anyway? (y or n) y
