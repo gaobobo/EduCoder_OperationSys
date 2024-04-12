@@ -12,10 +12,12 @@ case $DownloadSite in
     Gitee)
         wget -O /tmp/3.4.ketang-2/第二关.txt https://gitee.com/coconut_floss/EduCoder_OperationSys/raw/main/Source/3.4.ketang-2/第二关.txt
         wget -O /tmp/3.4.ketang-2/dbg.log https://gitee.com/coconut_floss/EduCoder_OperationSys/raw/main/Source/3.4.ketang-2/dbg.log
+        wget -O /tmp/3.4.kehou-1/gdb.log https://gitee.com/coconut_floss/EduCoder_OperationSys/raw/main/Source/3.4.kehou-1/gdb.log
         ;;
     Github)
         wget -O /tmp/3.4.ketang-2/第二关.txt https://raw.githubusercontent.com/gaobobo/EduCoder_OperationSys/main/Source/3.4.ketang-2/第二关.txt
         wget -O /tmp/3.4.ketang-2/dbg.log https://raw.githubusercontent.com/gaobobo/EduCoder_OperationSys/main/Source/3.4.ketang-2/dbg.log
+        wget -O /tmp/3.4.kehou-1/gdb.log https://raw.githubusercontent.com/gaobobo/EduCoder_OperationSys/main/Source/3.4.kehou-1/gdb.log
         ;;
     *)
         echo "Unknown download site: $DownloadSite"
@@ -26,5 +28,6 @@ esac
 
 mv -f /tmp/3.4.ketang-2/第二关.txt /data/workspace/myshixun/第二关.txt
 mv -f /tmp/3.4.ketang-2/dbg.log /root/dbg.log
+mv -f /tmp/3.4.kehou-1/gdb.log /root/gdb.log
 
 return 0
