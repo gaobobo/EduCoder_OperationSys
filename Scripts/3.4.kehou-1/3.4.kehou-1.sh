@@ -27,4 +27,8 @@ esac
 mv -f /tmp/3.4.kehou-1/第三关.txt /data/workspace/myshixun/第三关.txt
 mv -f /tmp/3.4.kehou-1/gdb.log /root/gdb.log
 
+echo "提示：该关卡的第4题答案不唯一，如果无法通关可能是其他答案。可能的其他答案有：0x06f33、0x6f37或0x8:0x00006f33、0x8:0x00006f37或0x6f33、0x6f37或0x00006f33、0x00006f37或0x8:0x6f33、0x8:0x6f37等。"
+echo "关于该问题的解释请参见： https://github.com/gaobobo/EduCoder_OperationSys/issues/27 。"
+echo "如果遇到了其他答案，欢迎在 https://github.com/gaobobo/EduCoder_OperationSys 中提出。"
+
 return 0
