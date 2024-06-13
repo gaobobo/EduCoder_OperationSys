@@ -1,0 +1,62 @@
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.5) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from tools/system...done.
+0x0000fff0 in sys_pipe (fildes=0x0 <startup_32>) at pipe.c:86
+86		j=0;
+Breakpoint 1 at 0x67a7: file init/main.c, line 116.
+
+Breakpoint 1, main () at init/main.c:116
+116	{			/* The startup routine assumes (well, ...) this */
+1: current->pid = 0
+(gdb) b 155
+Breakpoint 2 at 0x6969: file init/main.c, line 155.
+(gdb) c
+Continuing.
+
+Breakpoint 2, main () at init/main.c:155
+155					output_char('A' + mynext);
+1: current->pid = 1
+(gdb) x/65[Ki $r[Keip[Kp[K[K[K[K[K[K[K[K[Kp &mynext 
+$1 = (int *) 0x2282c <mynext>
+(gdb) x/6i $r[Keip
+=> 0x6969 <main+450>:	mov    0x2282c,%eax
+   0x696e <main+455>:	add    $0x41,%eax
+   0x6971 <main+458>:	movsbl %al,%eax
+   0x6974 <main+461>:	sub    $0xc,%esp
+   0x6977 <main+464>:	push   %eax
+   0x6978 <main+465>:	call   0x79ff <output_char>
+(gdb) info reg
+eax            0x1	1
+ecx            0x0	0
+edx            0xe	14
+ebx            0xe	14
+esp            0x257c0	0x257c0 <user_stack+4032>
+ebp            0x257e8	0x257e8 <user_stack+4072>
+esi            0xe0000	917504
+edi            0xffc	4092
+eip            0x6969	0x6969 <main+450>
+eflags         0x293	[ CF AF SF IF ]
+cs             0xf	15
+ss             0x17	23
+ds             0x17	23
+es             0x17	23
+fs             0x17	23
+gs             0x17	23
+(gdb) q
+A debugging session is active.
+
+	Inferior 1 [Remote target] will be killed.
+
+Quit anyway? (y or n) y

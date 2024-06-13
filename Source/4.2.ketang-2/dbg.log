@@ -1,0 +1,55 @@
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Aug 21 2020 at 09:28:41
+========================================================================
+Next at t=0
+(0) [0x0000fffffff0] f000:fff0 (unk. ctxt): jmpf 0xf000:e05b          ; ea5be000f0
+<bochs:1> <bochs:2> (0) Breakpoint 1, 0x000069d9 in ?? ()
+Next at t=116117095
+(0) [0x0000000069d9] 000f:000069d9 (unk. ctxt): mov eax, dword ptr ds:0x0002282c ; a12c280200
+<bochs:3> (0) Breakpoint 1, 0x000069d9 in ?? ()
+Next at t=116518442
+(0) [0x0000000069d9] 000f:000069d9 (unk. ctxt): mov eax, dword ptr ds:0x0002282c ; a12c280200
+<bochs:4> <bochs:5> Next at t=116518443
+(0) [0x0000000069de] 000f:000069de (unk. ctxt): add eax, 0x00000061       ; 83c061
+<bochs:6> eax: 0x00000001 1
+ecx: 0x00000000 0
+edx: 0x00000021 33
+ebx: 0x00000003 3
+esp: 0x000257c0 153536
+ebp: 0x000257e8 153576
+esi: 0x000e0000 917504
+edi: 0x00000ffc 4092
+eip: 0x000069de
+eflags 0x00000293: id vip vif ac vm rf nt IOPL=0 of df IF tf SF zf AF pf CF
+<bochs:7> es:0x0017, dh=0x00c0f300, dl=0x0000009f, valid=1
+	Data segment, base=0x00000000, limit=0x0009ffff, Read/Write, Accessed
+cs:0x000f, dh=0x00c0fb00, dl=0x0000009f, valid=1
+	Code segment, base=0x00000000, limit=0x0009ffff, Execute/Read, Non-Conforming, Accessed, 32-bit
+ss:0x0017, dh=0x00c0f300, dl=0x0000009f, valid=7
+	Data segment, base=0x00000000, limit=0x0009ffff, Read/Write, Accessed
+ds:0x0017, dh=0x00c0f300, dl=0x0000009f, valid=3
+	Data segment, base=0x00000000, limit=0x0009ffff, Read/Write, Accessed
+fs:0x0017, dh=0x00c0f300, dl=0x0000009f, valid=1
+	Data segment, base=0x00000000, limit=0x0009ffff, Read/Write, Accessed
+gs:0x0017, dh=0x00c0f300, dl=0x0000009f, valid=1
+	Data segment, base=0x00000000, limit=0x0009ffff, Read/Write, Accessed
+ldtr:0x0028, dh=0x00008201, dl=0xed700068, valid=1
+tr:0x0020, dh=0x00008b01, dl=0xed880068, valid=1
+gdtr:base=0x00005cc0, limit=0x7ff
+idtr:base=0x000054c0, limit=0x7ff
+<bochs:8> [bochs]:
+0x00ffe000 <bogus+       0>:	0x00000065	0x00001025	0x00002005	0x00003005
+0x00ffe010 <bogus+      16>:	0x00004005	0x00005065	0x00006065	0x00007025
+0x00ffe020 <bogus+      32>:	0x00008025	0x00009005	0x0000a025	0x0000b025
+0x00ffe030 <bogus+      48>:	0x0000c005	0x0000d025	0x0000e005	0x0000f005
+0x00ffe040 <bogus+      64>:	0x00010005	0x00011005	0x00012005	0x00013025
+0x00ffe050 <bogus+      80>:	0x00014025	0x00015025	0x00016025	0x00017025
+0x00ffe060 <bogus+      96>:	0x00018005	0x00019025	0x0001a005	0x0001b005
+0x00ffe070 <bogus+     112>:	0x0001c005	0x0001d005	0x0001e065	0x0001f065
+0x00ffe080 <bogus+     128>:	0x00020025	0x00021025	0x00ffc067	0x00023065
+0x00ffe090 <bogus+     144>:	0x00024065	0x00ffd067
+<bochs:9> [bochs]:
+0x00ffd7b0 <bogus+       0>:	0x00000042
+<bochs:10> 
